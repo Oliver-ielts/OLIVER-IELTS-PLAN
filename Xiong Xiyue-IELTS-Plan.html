@@ -1,0 +1,1318 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>熊希玥 · 雅思6.5冲刺计划 · Oliver雅思工作室</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:#faf8f5;color:#2a2520;font-family:-apple-system,'Noto Sans SC',system-ui,sans-serif;font-size:15px;line-height:1.7;position:relative;}
+.watermark-layer{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:1;overflow:hidden;}
+.wm{position:absolute;font-size:18px;font-weight:700;color:rgba(108,92,231,0.05);transform:rotate(-30deg);white-space:nowrap;letter-spacing:3px;font-family:Georgia,serif;}
+.page{max-width:820px;margin:0 auto;padding:20px 14px 80px;position:relative;z-index:2;}
+h1{font-size:22px;font-weight:700;margin:0 0 4px;text-align:center;}
+.header-sub{color:#888;font-size:12px;text-align:center;}
+.header-badge{font-size:10px;font-weight:700;letter-spacing:2px;color:#e17055;text-transform:uppercase;text-align:center;margin-bottom:4px;}
+.studio-tag{font-size:10px;color:#6c5ce7;text-align:center;margin-top:4px;letter-spacing:1px;}
+.countdown{text-align:center;background:#fff;border:2px solid #e17055;border-radius:10px;padding:10px;margin:10px 0 16px;}
+.cd-label{font-size:10px;color:#888;letter-spacing:1px;}
+.cd-num{font-size:24px;font-weight:700;color:#e17055;}
+.cd-date{font-size:11px;color:#555;margin-top:2px;}
+.urgent-banner{background:linear-gradient(135deg,#e17055,#fd9644);color:#fff;border-radius:10px;padding:11px 13px;margin-bottom:14px;font-size:12px;font-weight:600;text-align:center;line-height:1.6;}
+.tab-bar{display:flex;gap:2px;background:#f0ece8;border-radius:8px;padding:3px;margin-bottom:14px;flex-wrap:wrap;}
+.tab-btn{flex:1;min-width:80px;padding:8px 4px;border:none;border-radius:6px;font-size:11px;font-weight:600;cursor:pointer;color:#888;background:transparent;}
+.tab-btn.active{background:#e17055;color:#fff;}
+.tab-content{display:none;}
+.tab-content.active{display:block;}
+.phase-bar{display:flex;gap:4px;margin-bottom:10px;font-size:10px;}
+.phase-seg{flex:1;text-align:center;padding:6px 4px;border-radius:5px;font-weight:700;color:#fff;cursor:pointer;}
+.week-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-bottom:14px;}
+.week-btn{padding:9px;border-radius:8px;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:10px;font-weight:600;background:#fff;border:2px solid #e8e4df;color:#888;}
+.week-btn .num{font-size:14px;font-weight:700;line-height:1;}
+.week-btn .lbl{font-size:9px;margin-top:3px;}
+.week-banner{border-radius:10px;padding:12px 14px;margin-bottom:12px;}
+.day-tabs{display:flex;gap:3px;margin-bottom:10px;background:#f0ece8;border-radius:7px;padding:3px;flex-wrap:wrap;}
+.day-tab{flex:1;min-width:55px;padding:8px 3px;border:none;border-radius:5px;font-size:10px;font-weight:600;cursor:pointer;color:#888;background:transparent;}
+.day-tab.active{background:#fff;color:#2a2520;box-shadow:0 1px 2px rgba(0,0,0,.05);}
+.day-tab .checkmark{display:block;font-size:8px;color:#00b894;margin-top:1px;height:8px;}
+.day-header{border-radius:10px;padding:13px;margin-bottom:12px;}
+.progress-bar{background:#e8e4df;border-radius:3px;height:5px;margin-top:6px;overflow:hidden;}
+.progress-fill{height:100%;border-radius:3px;transition:width 0.3s;}
+.section-label{font-size:12px;font-weight:700;margin-bottom:6px;}
+.task-card{background:#fff;border:1px solid #e8e4df;border-radius:7px;padding:9px 12px;margin-bottom:5px;cursor:pointer;display:flex;gap:9px;align-items:flex-start;}
+.task-card.done{background:#f0fff4;border-color:#b8e6cc;opacity:0.65;}
+.task-check{font-size:16px;margin-top:-1px;flex-shrink:0;}
+.task-time{font-size:10px;font-weight:700;color:#e17055;background:#fff3f0;padding:1px 5px;border-radius:3px;white-space:nowrap;}
+.task-what{font-size:12.5px;font-weight:600;}
+.task-note{font-size:10.5px;color:#888;margin-top:2px;line-height:1.5;}
+.task-file{font-size:10px;color:#0984e3;margin-top:2px;}
+.lesson-card{background:#fff5f0;border:2px solid #e17055;border-radius:8px;padding:10px 12px;margin-bottom:6px;}
+.lesson-tag{display:inline-block;font-size:9px;font-weight:700;padding:2px 6px;border-radius:3px;background:#e17055;color:#fff;margin-right:6px;}
+.lesson-title{font-size:13px;font-weight:700;color:#2a2520;}
+.lesson-detail{font-size:11px;color:#555;margin-top:3px;}
+.book-card{background:#fff;border:1px solid #e8e4df;border-radius:8px;padding:12px 14px;margin-bottom:8px;}
+.book-name{font-size:13px;font-weight:700;}
+.book-tag{font-size:10px;font-weight:700;padding:2px 6px;border-radius:3px;}
+.book-detail{font-size:11.5px;color:#555;margin-top:4px;line-height:1.7;}
+.info-box{border-radius:8px;padding:14px;font-size:12px;color:#555;line-height:1.8;margin-top:12px;}
+.milestone-row{display:flex;gap:10px;align-items:flex-start;margin-bottom:10px;}
+.milestone-week{width:70px;font-size:11px;font-weight:700;color:#e17055;text-align:right;flex-shrink:0;padding-top:1px;}
+.milestone-dot{width:10px;height:10px;border-radius:50%;background:#e17055;flex-shrink:0;margin-top:5px;}
+.milestone-text{font-size:12px;font-weight:500;}
+.target-box{background:#fff;border:2px solid #e17055;border-radius:10px;padding:14px;margin-bottom:14px;}
+.target-row{display:flex;justify-content:space-between;align-items:center;padding:6px 0;border-bottom:1px dashed #f0ece8;}
+.target-row:last-child{border-bottom:none;}
+.target-skill{font-size:13px;font-weight:600;}
+.target-score{font-size:16px;font-weight:700;color:#e17055;}
+.diag-row{display:flex;justify-content:space-between;align-items:center;padding:5px 0;font-size:12px;}
+.diag-bar-wrap{flex:1;margin:0 10px;background:#f0ece8;height:14px;border-radius:7px;position:relative;overflow:hidden;}
+.diag-bar{position:absolute;left:0;top:0;height:100%;border-radius:7px;}
+.profile-card{background:#fff;border:2px solid #e17055;border-radius:10px;padding:14px;margin-bottom:14px;}
+.profile-row{display:flex;padding:7px 0;border-bottom:1px dashed #f0ece8;font-size:12.5px;align-items:flex-start;}
+.profile-row:last-child{border-bottom:none;}
+.profile-key{width:90px;color:#888;font-weight:600;flex-shrink:0;}
+.profile-val{flex:1;color:#2a2520;}
+.copyright-box{background:#f8f5f0;border:1px solid #d4c8b8;border-radius:8px;padding:14px;margin-top:20px;font-size:10.5px;color:#666;line-height:1.7;}
+.copyright-box strong{color:#2a2520;}
+.subj-listen{background:#0984e3;color:#fff;}
+.subj-read{background:#00b894;color:#fff;}
+.subj-write{background:#e17055;color:#fff;}
+.subj-speak{background:#6c5ce7;color:#fff;}
+.subj-pill{display:inline-block;padding:1px 7px;border-radius:8px;font-size:10px;font-weight:700;margin-right:4px;}
+</style>
+</head>
+<body>
+<div class="watermark-layer" id="wmLayer"></div>
+
+<div class="page">
+<div class="header-badge">IELTS 6.5 · 26天极限冲刺</div>
+<h1>熊希玥 · 雅思 6.5 冲刺计划</h1>
+<p class="header-sub">L6.5 · R6.5 · W6.0 · S6.0 → 总分 6.5（单科≥6.0）· 2026/5/27 考试</p>
+<p class="studio-tag">— Oliver雅思工作室 独立编制 —</p>
+
+<div class="countdown">
+<div class="cd-label">距离考试还有</div>
+<div class="cd-num" id="cdNum">26 天</div>
+<div class="cd-date">考试日：2026 年 5 月 27 日（周三）</div>
+</div>
+
+<div class="urgent-banner">
+🚨 时间极限紧张 · 8h/天 × 22-23个学习日 ≈ 180h<br>
+核心策略：<strong>口语主攻（4.5→6.0，跨1.5）</strong>·听阅向上拉分·写作守6.0
+</div>
+
+<div class="tab-bar">
+<button class="tab-btn" onclick="showTab('profile',this)">👤 学生档案</button>
+<button class="tab-btn" onclick="showTab('design',this)">💡 设计思路</button>
+<button class="tab-btn" onclick="showTab('guide',this)">📖 使用说明</button>
+<button class="tab-btn active" onclick="showTab('plan',this)">📅 周计划</button>
+<button class="tab-btn" onclick="showTab('books',this)">📚 资料说明</button>
+<button class="tab-btn" onclick="showTab('milestone',this)">🏁 里程碑</button>
+</div>
+
+<!-- 1. 学生档案 -->
+<div class="tab-content" id="tab-profile">
+
+<div class="profile-card">
+<h3 style="font-size:15px;color:#e17055;margin-bottom:10px">📋 基本信息</h3>
+<div class="profile-row"><div class="profile-key">姓名</div><div class="profile-val"><strong>熊希玥</strong></div></div>
+<div class="profile-row"><div class="profile-key">考试日期</div><div class="profile-val"><strong>2026年5月27日（周三）</strong></div></div>
+<div class="profile-row"><div class="profile-key">备考起始</div><div class="profile-val">2026年5月1日（周五）</div></div>
+<div class="profile-row"><div class="profile-key">备考时长</div><div class="profile-val"><strong style="color:#e17055">26天 / 23个学习日</strong>（每周休1天）</div></div>
+<div class="profile-row"><div class="profile-key">每日学习</div><div class="profile-val"><strong>8小时</strong>（其中3节1对1课，每节1h）</div></div>
+<div class="profile-row"><div class="profile-key">总学习预算</div><div class="profile-val"><strong style="color:#0984e3">约 180 小时</strong></div></div>
+<div class="profile-row"><div class="profile-key">目标分数</div><div class="profile-val"><strong style="color:#e17055">总分 6.5（单科 ≥ 6.0）</strong></div></div>
+</div>
+
+<div class="profile-card" style="border-color:#0984e3">
+<h3 style="font-size:15px;color:#0984e3;margin-bottom:10px">📊 上次考试成绩 vs 目标分数</h3>
+<div style="font-size:12px;color:#444;line-height:1.7;margin-bottom:10px">
+基于上次考试成绩，本计划<strong>差异化分配资源</strong>，按差距大小调配时间投入：
+</div>
+<div class="diag-row">
+<span style="width:55px;font-weight:700">🎧 听力</span>
+<span style="color:#888;font-size:11px;width:55px">5.5 → 6.5</span>
+<div class="diag-bar-wrap"><div class="diag-bar diag-prev" style="width:55%;background:#bbb"></div><div class="diag-bar diag-target" style="width:65%;background:rgba(9,132,227,0.3)"></div></div>
+<span style="color:#0984e3;font-weight:700;width:65px;text-align:right;font-size:11px">+1.0 较难</span>
+</div>
+<div class="diag-row">
+<span style="width:55px;font-weight:700">📖 阅读</span>
+<span style="color:#888;font-size:11px;width:55px">6.0 → 6.5</span>
+<div class="diag-bar-wrap"><div class="diag-bar diag-prev" style="width:60%;background:#bbb"></div><div class="diag-bar diag-target" style="width:65%;background:rgba(0,184,148,0.3)"></div></div>
+<span style="color:#00b894;font-weight:700;width:65px;text-align:right;font-size:11px">+0.5 中等</span>
+</div>
+<div class="diag-row">
+<span style="width:55px;font-weight:700">✍️ 写作</span>
+<span style="color:#888;font-size:11px;width:55px">5.5 → 6.0</span>
+<div class="diag-bar-wrap"><div class="diag-bar diag-prev" style="width:55%;background:#bbb"></div><div class="diag-bar diag-target" style="width:60%;background:rgba(225,112,85,0.4)"></div></div>
+<span style="color:#e17055;font-weight:700;width:65px;text-align:right;font-size:11px">+0.5 中等</span>
+</div>
+<div class="diag-row">
+<span style="width:55px;font-weight:700">🗣️ 口语</span>
+<span style="color:#888;font-size:11px;width:55px">4.5 → 6.0</span>
+<div class="diag-bar-wrap"><div class="diag-bar diag-prev" style="width:45%;background:#bbb"></div><div class="diag-bar diag-target" style="width:60%;background:rgba(108,92,231,0.4)"></div></div>
+<span style="color:#6c5ce7;font-weight:700;width:65px;text-align:right;font-size:11px">+1.5 🚨最难</span>
+</div>
+<div style="margin-top:12px;padding-top:10px;border-top:1px dashed #ddd;font-size:11.5px;color:#555;line-height:1.7">
+预期总分：(6.5+6.5+6.0+6.0)/4 = <strong style="color:#e17055">6.25 → 四舍五入 6.5 ✅</strong><br>
+最低保底：(6.0+6.0+6.0+6.0)/4 = 6.0（仍达单科≥6.0要求）
+</div>
+</div>
+
+<div class="profile-card" style="border-color:#6c5ce7">
+<h3 style="font-size:15px;color:#6c5ce7;margin-bottom:10px">🎯 资源调配（180h 总预算）</h3>
+<div style="font-size:12px;color:#444;line-height:1.9">
+<span class="subj-pill subj-speak">口语</span> <strong>60h（33%）</strong> — 口语6h + 陪练25h + 题库15h + 360条10h + 录音回听4h<br>
+<span class="subj-pill subj-write">写作</span> <strong>45h（25%）</strong> — 写作课8h + 8篇精改12h + 自练20h + 短语5h<br>
+<span class="subj-pill subj-listen">听力</span> <strong>40h（22%）</strong> — 听力课6h + 真题20h + 精听+Shadowing 10h + 词汇4h<br>
+<span class="subj-pill subj-read">阅读</span> <strong>25h（14%）</strong> — 阅读课4h + 真题15h + 复盘+替换6h<br>
+<span class="subj-pill" style="background:#f0a500;color:#fff">词汇/逻辑</span> <strong>10h（6%）</strong> — 听力179+全科核心+阅读538精选+137逻辑词
+</div>
+</div>
+
+<div class="info-box" style="background:#fff8e1;border:1px solid #ffd166">
+<strong style="color:#e17055">💡 教师寄语：</strong><br>
+熊希玥同学：<br>
+1. 你的<strong>阅读6.0已达标</strong>，听力5.5也有基础，证明你的语言基础并不差。<br>
+2. 你最大的挑战是<strong>口语4.5</strong>，这通常源于"会写不会说"——所以本计划安排<strong>每日2-3小时口语训练</strong>（含陪练+录音+题库）。<br>
+3. 写作5.5说明<strong>结构和语法尚需打磨</strong>，本计划用<strong>8篇精改作文</strong>密集打磨，每篇都有老师批改+二稿。<br>
+4. 26天非常紧张，但只要严格按计划执行，<strong>6.5是可以达成的</strong>。务必：①不缺课 ②每天完成全部任务 ③主动开口练口语 ④作文按时提交批改。<br>
+5. 如有疑问随时联系：<strong style="color:#e17055">微信 Oliver66999</strong>
+</div>
+</div>
+
+<!-- 2. 设计思路 -->
+<div class="tab-content" id="tab-design">
+
+<div class="info-box" style="background:#fff;border:2px solid #e17055">
+<h3 style="font-size:15px;color:#e17055;margin-bottom:10px">💡 计划设计的6大核心思路</h3>
+<div style="font-size:12px;color:#444;line-height:1.8">
+本计划<strong>不是模板套用</strong>，而是基于熊希玥的具体情况量身定制。以下是6大设计决策：
+</div>
+</div>
+
+<div class="info-box" style="background:#fff;border:1px solid #e8e4df;margin-top:10px">
+<strong style="color:#e17055;font-size:13px">① 资源差异化：按"差距大小"分配时间，不平均用力</strong><br>
+<div style="font-size:11.5px;color:#555;line-height:1.7;margin-top:5px">
+传统计划往往四科平均分配（25%/25%/25%/25%），但熊希玥的科目差距悬殊：<br>
+&nbsp;&nbsp;・口语差1.5分→分配33%<br>
+&nbsp;&nbsp;・写作差0.5分（但上限低）→分配25%<br>
+&nbsp;&nbsp;・听力差1.0分（中国学生易提分）→分配22%<br>
+&nbsp;&nbsp;・阅读差0.5分（已达标）→只分配14%维持手感<br>
+<strong>避免无效练习</strong>：阅读已达标，再做大量真题边际效益极低。
+</div>
+</div>
+
+<div class="info-box" style="background:#fff;border:1px solid #e8e4df;margin-top:10px">
+<strong style="color:#0984e3;font-size:13px">② 时间利用最大化：8h/天 × 23天 = 180h 全部排满</strong><br>
+<div style="font-size:11.5px;color:#555;line-height:1.7;margin-top:5px">
+<strong>每日时间结构</strong>：<br>
+&nbsp;&nbsp;・<strong>上午4h（含3节1对1课）</strong>：吸收新知识为主<br>
+&nbsp;&nbsp;・<strong>下午3h</strong>：自主练习+真题+精改作文<br>
+&nbsp;&nbsp;・<strong>晚上1h</strong>：词汇默写+360条+口语题库朗读+录音回听<br>
+<strong>1对1课时翻倍</strong>：刘知之26周用48h课，熊希玥26天就要用60-70h课，<strong>相当于刘知之课时密度的8倍</strong>。
+</div>
+</div>
+
+<div class="info-box" style="background:#fff;border:1px solid #e8e4df;margin-top:10px">
+<strong style="color:#6c5ce7;font-size:13px">③ 口语主攻：从第1天开始，贯穿全程</strong><br>
+<div style="font-size:11.5px;color:#555;line-height:1.7;margin-top:5px">
+口语4.5→6.0需要<strong>"开口量"</strong>——不是会说，而是说得多、说得熟、说得准。所以：<br>
+&nbsp;&nbsp;・<strong>陪练从W1 Day3就启动</strong>（不像母板W19才启动）<br>
+&nbsp;&nbsp;・<strong>每天必做录音+回听</strong>，建立语感反馈循环<br>
+&nbsp;&nbsp;・<strong>360条每天5条</strong>（不是母板的4条），加速地道表达积累<br>
+&nbsp;&nbsp;・<strong>题库W3-W4分轮全本通</strong>，确保Part1+2+3全覆盖
+</div>
+</div>
+
+<div class="info-box" style="background:#fff;border:1px solid #e8e4df;margin-top:10px">
+<strong style="color:#00b894;font-size:13px">④ 写作"少而精"：8篇精改 ＞ 20篇粗练</strong><br>
+<div style="font-size:11.5px;color:#555;line-height:1.7;margin-top:5px">
+26天写20篇作文学生写不动，老师改不完。所以：<br>
+&nbsp;&nbsp;・<strong>8篇精改</strong>（Task1×4 + Task2×4），每篇都有<strong>初稿+老师批改+二稿</strong>三轮迭代<br>
+&nbsp;&nbsp;・每周2-3篇作文，与课程内容紧密对齐（学完结构就写结构作文）<br>
+&nbsp;&nbsp;・写作课从原本22h压缩到8h，把节省时间还给精改<br>
+&nbsp;&nbsp;・写作 5.5→6.0 关键在<strong>结构清晰+语法少错</strong>，比拼词汇升级更重要。
+</div>
+</div>
+
+<div class="info-box" style="background:#fff;border:1px solid #e8e4df;margin-top:10px">
+<strong style="color:#f0a500;font-size:13px">⑤ 真题精选：剑14-20 共28套，但只用其中12-15套</strong><br>
+<div style="font-size:11.5px;color:#555;line-height:1.7;margin-top:5px">
+26天做不完28套真题。我的取舍策略：<br>
+&nbsp;&nbsp;・<strong>剑14-15</strong>：基础期题型拆解练习（每节课配套1-2组）<br>
+&nbsp;&nbsp;・<strong>剑16-17</strong>：强化期整套限时（W2每日1套）<br>
+&nbsp;&nbsp;・<strong>剑18-19</strong>：冲刺期模考使用（W3共3次模考）<br>
+&nbsp;&nbsp;・<strong>剑20</strong>：留作考前1周轻量练习+保持手感<br>
+&nbsp;&nbsp;・<strong>剑12-13</strong>：作为备用资料（如有时间补练）
+</div>
+</div>
+
+<div class="info-box" style="background:#fff;border:1px solid #e8e4df;margin-top:10px">
+<strong style="color:#fd9644;font-size:13px">⑥ 复盘流程精简：4步而非6步，提升执行效率</strong><br>
+<div style="font-size:11.5px;color:#555;line-height:1.7;margin-top:5px">
+母板的6步复盘单套需60-90min，对26天的紧凑节奏过于沉重。本计划采用：<br>
+&nbsp;&nbsp;・<strong>整套真题</strong>：4步精简复盘（约45min）<br>
+&nbsp;&nbsp;・<strong>单题型练习</strong>：2步快速复盘（错因+替换，约20min）<br>
+&nbsp;&nbsp;・<strong>3次模考</strong>：完整4步深度复盘（约90min分2天完成）<br>
+确保<strong>"做完=学到"</strong>，不让真题沦为刷题。
+</div>
+</div>
+
+<div class="info-box" style="background:#f3e8ff;border:1px solid #d4c8e8">
+<strong style="color:#6c5ce7">📐 阶段划分逻辑</strong><br>
+<div style="font-size:11.5px;color:#555;line-height:1.7;margin-top:5px">
+<strong>W1 基础期（5/1-5/7）</strong>：4科核心题型<strong>速成扫盲</strong>，建立做题框架；口语启动；第1次模考摸底<br>
+<strong>W2 强化期（5/8-5/14）</strong>：写作密集精改+口语题库覆盖+第2次模考；按弱项二次加强<br>
+<strong>W3 冲刺期（5/15-5/21）</strong>：高密度真题练习+第3次模考+口语Part3深化<br>
+<strong>W4 考前期（5/22-5/27）</strong>：题库2轮通关+错题再过+状态调整+考试日<br>
+<br>
+<strong>每周休息1天</strong>：建议固定周日（5/3、5/10、5/17、5/24），可自由调整。
+</div>
+</div>
+</div>
+
+<!-- 3. 使用说明 -->
+<div class="tab-content" id="tab-guide">
+
+<div class="info-box" style="background:#fff3f0;border:2px solid #e17055">
+<h3 style="font-size:15px;color:#e17055;margin-bottom:10px">📖 网页使用全指南</h3>
+<div style="font-size:12px;color:#444;line-height:1.8">
+本网页为<strong>交互式备考计划</strong>，不仅可以查看，还可以勾选完成情况。请仔细阅读以下使用说明，确保正确使用。
+</div>
+</div>
+
+<div class="info-box" style="background:#fff;border:1px solid #e8e4df">
+<strong style="color:#0984e3;font-size:13px">🗂️ 顶部 6 个标签页导航</strong><br>
+<div style="font-size:11.5px;color:#555;line-height:1.8;margin-top:5px">
+<strong>👤 学生档案</strong>：你的基本信息、上次成绩诊断、目标分数、教师寄语<br>
+<strong>💡 设计思路</strong>：为什么这么排计划（6大设计决策）<br>
+<strong>📖 使用说明</strong>：你正在看的页面 - 网页和资料的使用方法<br>
+<strong>📅 周计划</strong>：核心区域 - 26天每日学习任务<br>
+<strong>📚 资料说明</strong>：14份资料的具体使用方法<br>
+<strong>🏁 里程碑</strong>：4周关键节点检查清单
+</div>
+</div>
+
+<div class="info-box" style="background:#fff;border:1px solid #e8e4df;margin-top:10px">
+<strong style="color:#00b894;font-size:13px">📅 周计划页面操作</strong><br>
+<div style="font-size:11.5px;color:#555;line-height:1.8;margin-top:5px">
+<strong>① 三阶段彩色快速跳转条</strong>：点击直接跳到对应阶段（基础期/强化期/冲刺期/考前）<br>
+<strong>② 4 个周按钮</strong>：W1/W2/W3/W4 切换周<br>
+<strong>③ 每周 6-7 个 Day 标签</strong>：切换不同学习日<br>
+<strong>④ 任务卡片可点击勾选</strong>：完成的任务会变绿+打勾，方便追踪进度<br>
+<strong>⑤ 进度条</strong>：每日任务完成度 = 已勾选 / 总任务数<br>
+<br>
+<strong>⚠️ 注意</strong>：勾选状态保存在浏览器本地，<strong>关闭浏览器后会重置</strong>。建议每天集中查看+勾选，保持本地浏览器不关闭。
+</div>
+</div>
+
+<div class="info-box" style="background:#fff;border:1px solid #e8e4df;margin-top:10px">
+<strong style="color:#6c5ce7;font-size:13px">🎯 任务卡片图标含义</strong><br>
+<div style="font-size:11.5px;color:#555;line-height:1.8;margin-top:5px">
+<strong>⏱ 时长标签（红色）</strong>：本任务建议时长<br>
+<strong>📎 文件标签（蓝色）</strong>：使用哪份资料/真题<br>
+<strong>⭐ 星号</strong>：核心重点任务（1对1课/精改作文/陪练等）<br>
+<strong>⭐⭐⭐ 三星</strong>：口语/写作主攻关键任务<br>
+<strong>🔥 火焰</strong>：模考/考试日<br>
+<strong>⚡ 闪电</strong>：阶段性里程碑达成<br>
+<strong>🎓 学士帽 / 橙色卡片</strong>：1对1课<br>
+<strong>📋 表格</strong>：复盘任务<br>
+<strong>📕 紫书</strong>：360条<br>
+<strong>📐 直角</strong>：137逻辑词
+</div>
+</div>
+
+<div class="info-box" style="background:#fffbe6;border:2px solid #f0a500;margin-top:10px">
+<strong style="color:#f0a500;font-size:13px">⏰ 每日学习节奏（8h/天 × 6天/周）</strong><br>
+<div style="font-size:11.5px;color:#555;line-height:1.8;margin-top:5px">
+<strong>上午 4h</strong>（约 9:00-13:00）：<br>
+&nbsp;&nbsp;・3节1对1课（每节1h，课间10min休息）<br>
+&nbsp;&nbsp;・1h课后强化练习<br>
+<strong>下午 3h</strong>（约 14:30-17:30）：<br>
+&nbsp;&nbsp;・自主练习 — 真题/精改作文/听阅复盘<br>
+<strong>晚上 1h</strong>（约 19:30-20:30）：<br>
+&nbsp;&nbsp;・词汇默写+360条+口语题库朗读+录音回听<br>
+<br>
+<strong>每周休息 1 天</strong>：建议周日，调整状态防止过度疲劳。<br>
+<strong>遇课时调整</strong>：实际可与老师协商课时密度，保持每周 18-21h课时。
+</div>
+</div>
+
+<div class="info-box" style="background:#fffbe6;border:2px solid #f0a500;margin-top:10px">
+<strong style="color:#f0a500;font-size:13px">📋 真题练后复盘流程（精简4步）</strong><br>
+<div style="font-size:11.5px;color:#444;line-height:1.7;margin-top:5px">
+⚠️ <strong>练习真题 = 30%「做题」+ 70%「复盘」</strong>。做完答案后<strong>不要直接看解析</strong>，按下方流程：<br>
+&nbsp;&nbsp;・<strong>整套真题</strong> → 完整4步（约45min）<br>
+&nbsp;&nbsp;・<strong>单section/单篇</strong> → 简化2步（错因+替换，约20min）<br>
+&nbsp;&nbsp;・<strong>模考</strong> → <strong style="color:#e17055">完整4步深度复盘，分2天完成</strong>
+</div>
+
+<div style="background:#fff;border-radius:8px;padding:11px;margin-top:10px;border-left:4px solid #0984e3">
+<strong style="color:#0984e3;font-size:13px">🎧 听力 4 步精简复盘</strong>
+<div style="font-size:11.5px;color:#555;line-height:1.75;margin-top:6px">
+<strong>Step 1 · 错题归因</strong>：5种错因分类（拼写/生词/语音/定位/理解）。统计各Part得分率，识别薄弱题型。<br>
+<strong>Step 2 · 答案句标注</strong>：黄色荧光笔标答案句，蓝色标信号词（参照《137逻辑关系结构》10类）。<br>
+<strong>Step 3 · 词汇清零</strong>：生词+拼写陷阱整理（accommodation/restaurant/Wednesday等）。<br>
+<strong>Step 4 · Shadowing</strong>：错题段落跟读3遍，重点连读/弱读/重音模仿。
+</div>
+</div>
+
+<div style="background:#fff;border-radius:8px;padding:11px;margin-top:8px;border-left:4px solid #00b894">
+<strong style="color:#00b894;font-size:13px">📖 阅读 4 步精简复盘</strong>
+<div style="font-size:11.5px;color:#555;line-height:1.75;margin-top:6px">
+<strong>Step 1 · 错题归因</strong>：5种错因（定位/替换/逻辑/词汇/粗心）+ T/F/NG专项归类。<br>
+<strong>Step 2 · 答案句精读</strong>：括号法拆解长难句（主谓宾下划线，从句括号），写出中文主干。<br>
+<strong>Step 3 · 替换对提取</strong>：题干↔原文 同义替换至少10组/篇。<br>
+<strong>Step 4 · 干扰项分析</strong>：识别4类（偷换概念/无中生有/绝对化/反向干扰）。
+</div>
+</div>
+
+<div style="font-size:11px;color:#888;margin-top:9px;font-style:italic">
+💡 上述流程由 Oliver 老师精简自完整6步流程，适合短期冲刺学员。
+</div>
+</div>
+
+<div class="info-box" style="background:#fff3f0;border:2px solid #e17055;margin-top:10px">
+<strong style="color:#e17055;font-size:13px">⚠️ 必须立即购买的资料</strong><br>
+<div style="font-size:12.5px;color:#444;line-height:1.8;margin-top:5px">
+<strong>📕 《雅思地道口语表达360条》</strong>（Oliver老师著作）<br>
+🛒 <strong style="color:#e17055">购买方式：淘宝 或 拼多多 搜索《雅思地道口语表达360条》</strong><br>
+📖 <strong>使用安排</strong>：从第1天开始，每天5条，4周共学约140条核心表达<br>
+💡 <strong>价值</strong>：口语4.5→6.0的关键武器，地道表达直接拉高词汇分项<br>
+⚠️ <strong>务必5/1开课前到货</strong>，可在淘宝/拼多多选当日达
+</div>
+</div>
+
+<div class="info-box" style="background:#f3e8ff;border:2px solid #6c5ce7;margin-top:10px">
+<strong style="color:#6c5ce7;font-size:13px">📐 137逻辑词·精简学习方案</strong><br>
+<div style="font-size:11.5px;color:#444;line-height:1.7;margin-top:5px">
+时间紧张，10类逻辑词浓缩为<strong>4周分配</strong>：<br>
+&nbsp;&nbsp;・<strong>W1</strong>：因果/并列/对比转折（3类·听阅写最高频）<br>
+&nbsp;&nbsp;・<strong>W2</strong>：让步/解释/目的（3类·写作大杀器）<br>
+&nbsp;&nbsp;・<strong>W3</strong>：条件/总结/时间（3类·全面覆盖）<br>
+&nbsp;&nbsp;・<strong>W4</strong>：空间（地图题专用）+ 全部复习<br>
+<strong>应用</strong>：每篇精改作文使用≥3类，口语Part3刻意使用 having said that, in particular, not only...but also。
+</div>
+</div>
+
+<div class="info-box" style="background:#f0fff4;border:1px solid #b8e6cc;margin-top:10px">
+<strong style="color:#00b894;font-size:13px">🎯 26天后将完成</strong><br>
+<div style="font-size:11.5px;color:#555;line-height:1.8;margin-top:5px">
+✅ 1对1课程 60-70h（听6+阅5+写8+口6+陪练25+作文精改课6）<br>
+✅ 8篇精改作文（Task1×4 + Task2×4） + 3次完整模考<br>
+✅ 口语：25h陪练 + 题库2轮全本通 + 360条约140条<br>
+✅ 真题：剑14-20（28套）核心题型练习+模考<br>
+✅ 137逻辑词10类学完 + 听力179考点词 + 写作必备短语精选<br>
+<br>
+<strong style="color:#e17055">🎯 目标：2026年5月27日 · 总分 6.5（单科≥6.0）！</strong>
+</div>
+</div>
+</div>
+
+<!-- 4. 周计划 -->
+<div class="tab-content active" id="tab-plan">
+<div class="phase-bar">
+<div class="phase-seg" style="background:#e17055" onclick="jumpWeek(0)">基础期 W1</div>
+<div class="phase-seg" style="background:#0984e3" onclick="jumpWeek(1)">强化期 W2</div>
+<div class="phase-seg" style="background:#00b894" onclick="jumpWeek(2)">冲刺期 W3</div>
+<div class="phase-seg" style="background:#6c5ce7" onclick="jumpWeek(3)">考前 W4</div>
+</div>
+<div class="week-grid" id="weekGrid"></div>
+<div id="weekDetail"></div>
+</div>
+
+<!-- 5. 资料说明 -->
+<div class="tab-content" id="tab-books">
+<div id="booksContent"></div>
+</div>
+
+<!-- 6. 里程碑 -->
+<div class="tab-content" id="tab-milestone">
+<div id="milestoneContent"></div>
+</div>
+
+<!-- 版权声明 -->
+<div class="copyright-box">
+<strong style="color:#e17055;font-size:11.5px;display:block;margin-bottom:6px">📜 版权声明</strong>
+本备考计划由 <strong>Oliver雅思工作室</strong> 独立编制，其教学设计、体系架构、周计划编排逻辑及整体内容选择受《中华人民共和国著作权法》保护，版权归 <strong>上海展眉教育科技有限公司</strong> 所有。<br><br>
+计划内引用的雅思真题、词汇表、参考书籍等原始资料版权归原作者及出版方（如 Cambridge University Press 等）所有，本工作室不主张上述原始内容的版权。<br><br>
+本计划仅供指定学员个人学习使用。未经授权，任何机构或个人不得擅自复制、转载、改编、出售、上传网络或以任何形式向第三方披露本计划全部或部分内容。<strong style="color:#e17055">侵权必究。</strong><br><br>
+<span style="color:#e17055">📩 如需定制同款雅思备考计划，请添加微信：<strong>Oliver66999</strong></span>
+</div>
+
+<div style="text-align:center;margin-top:18px;color:#ccc;font-size:10px;">
+熊希玥 IELTS 6.5 · 26天冲刺 · 约180h · Oliver雅思工作室 © 2026
+</div>
+</div>
+
+<script>
+// 生成稀疏水印
+(function(){
+  const layer = document.getElementById('wmLayer');
+  const positions = [
+    {x:'8%',y:'5%'},{x:'70%',y:'12%'},{x:'30%',y:'25%'},{x:'82%',y:'33%'},
+    {x:'15%',y:'45%'},{x:'58%',y:'55%'},{x:'25%',y:'68%'},{x:'75%',y:'78%'},
+    {x:'10%',y:'88%'},{x:'62%',y:'95%'},{x:'40%',y:'108%'},{x:'80%',y:'120%'},
+    {x:'20%',y:'135%'},{x:'65%',y:'148%'},{x:'35%',y:'162%'},{x:'78%',y:'175%'},
+    {x:'12%',y:'190%'},{x:'55%',y:'205%'},{x:'28%',y:'220%'},{x:'72%',y:'235%'}
+  ];
+  positions.forEach(p => {
+    const wm = document.createElement('div');
+    wm.className = 'wm';
+    wm.textContent = 'Oliver雅思';
+    wm.style.left = p.x;
+    wm.style.top = p.y;
+    layer.appendChild(wm);
+  });
+})();
+
+const phaseColors = {
+  "基础期":"#e17055",
+  "强化期":"#0984e3",
+  "冲刺期":"#00b894",
+  "考前":"#6c5ce7"
+};
+
+const WEEKS = [
+  {
+    week:1, phase:"基础期", title:"W1 · 题型扫盲+口语启动 (5/1-5/7)",
+    desc:"听阅写4科核心题型扫盲+口语主攻启动+第1次摸底模考",
+    lessons:[
+      {type:"听力1",title:"S1基础填空",time:"1h",detail:"6维度做题法+填空陷阱"},
+      {type:"听力2",title:"S2-4填空+短选",time:"1h",detail:"复杂填空+短题反套路"},
+      {type:"听力3",title:"长选+地图题",time:"1h",detail:"长选逻辑结构法+地图333法则"},
+      {type:"阅读1",title:"填空+判断",time:"1h",detail:"填空四大考点+T/F/NG区分"},
+      {type:"阅读2",title:"单选+多选",time:"1h",detail:"单选与匹配的共通处"},
+      {type:"写作1",title:"动态小作文",time:"1h",detail:"挑点+分段+思路"},
+      {type:"写作2",title:"静态小作文",time:"1h",detail:"考官思路+对比表达"},
+      {type:"写作3",title:"大作文审题+结构",time:"1h",detail:"避陷阱+三种文章结构"},
+      {type:"口语1",title:"Part1三类问法",time:"1h",detail:"⭐⭐⭐答题框架+补充细节"},
+      {type:"口语2",title:"Part2人物类",time:"1h",detail:"⭐⭐⭐描述人物+扩展表达"},
+      {type:"口语3",title:"Part2地点+物品",time:"1h",detail:"⭐⭐扩展话题覆盖"},
+    ],
+    days:[
+      { num:1, focus:"5/1 周五·启动日 词汇+三课同步",
+        vocab:[
+          {t:"30min",what:"📝 全科核心考点词 第1组（英译汉）",file:"📎 默写纸-雅思必会核心考点词",note:"建立词汇基础"},
+          {t:"15min",what:"📝 听力179考点词 1-50",file:"📎 雅思听力179考点词单词表",note:"必须能正确发音"},
+          {t:"15min",what:"📐 137逻辑词·因果关系（17个）",file:"📎 137英语逻辑关系结构总结",note:"听阅是信号词，写口是连接武器"},
+          {t:"30min",what:"📕 地道口语360条 第1-5条",file:"📎 《雅思地道口语表达360条》(淘宝/拼多多搜索购买)",note:"⭐口语提分核心！精读语境+背诵"},
+        ],
+        practice:[
+          {t:"60min",what:"⭐【1对1课】听力S1基础填空",note:"老师讲6维度做题法+填空陷阱"},
+          {t:"60min",what:"⭐【1对1课】写作动态小作文",note:"挑点+分段+思路分析"},
+          {t:"60min",what:"⭐【1对1课】口语Part1三类问法",note:"⭐⭐⭐口语主攻起点：建立答题框架"},
+          {t:"60min",what:"课后练习：听力S1专项2组",file:"📎 剑14 Test1 S1 + 剑15 Test1 S1",note:"应用上课讲的6维度做题法"},
+        ],
+        other:[
+          {t:"30min",what:"⭐口语Part1高频题5个 录音3遍",file:"📎 2026年1-4月口语题库",note:"自答→录音→对照范例→修改"},
+          {t:"30min",what:"写作Task1动态小作文 1篇（不限时）",file:"📎 剑14 Test1 Task1",note:"运用上课讲的挑点+分段法"},
+          {t:"15min",what:"📋 当日错题整理+建立专属错题本",note:"听力错题/词汇错词分类整理"},
+        ],
+      },
+      { num:2, focus:"5/2 周六·听力深入+口语扩展",
+        vocab:[
+          {t:"30min",what:"📝 全科核心考点词 第1组（汉译英默写）",file:"📎 默写纸-雅思必会核心考点词"},
+          {t:"15min",what:"📝 听力179考点词 51-100",file:"📎 雅思听力179考点词单词表"},
+          {t:"15min",what:"📐 137逻辑词·并列附加（16个）",file:"📎 137英语逻辑关系结构总结"},
+          {t:"30min",what:"📕 地道口语360条 第6-10条",file:"📎 《雅思地道口语表达360条》"},
+        ],
+        practice:[
+          {t:"60min",what:"⭐【1对1课】听力S2-4填空+短选题",note:"复杂填空+短题三部反套路"},
+          {t:"60min",what:"⭐【1对1课】写作静态小作文",note:"考官思路+数据组织+对比表达"},
+          {t:"60min",what:"⭐【1对1课】口语Part2人物类",note:"⭐⭐⭐描述人物+扩展表达"},
+          {t:"60min",what:"课后练习：听力S2-4 专项2组",file:"📎 剑14 Test1-2 Section 2-4",note:"运用复杂填空法"},
+        ],
+        other:[
+          {t:"30min",what:"⭐口语Part2人物题3个 完整答+录音",file:"📎 2026年1-4月口语题库",note:"运用上课框架，时间控制2min"},
+          {t:"30min",what:"写作Task1静态小作文 1篇（不限时）",file:"📎 剑14 Test2 Task1",note:"重点：数据组织+对比表达"},
+          {t:"15min",what:"⭐【发老师批改】Task1动态小作文（昨日）",note:"重点反馈：思路+结构是否清晰"},
+        ],
+      },
+      { num:3, focus:"5/3 周日·休息日（建议）",
+        vocab:[
+          {t:"30min",what:"📕 地道口语360条 第11-15条",file:"📎 《雅思地道口语表达360条》",note:"轻量学习，保持手感"},
+          {t:"15min",what:"📝 复习昨日错词+词汇本扫一遍",note:"不要新学，巩固为主"},
+        ],
+        practice:[
+          {t:"30min",what:"⭐口语Part1+2 高频题各3个 录音回听",file:"📎 2026年1-4月口语题库",note:"自我修正+流畅度提升"},
+          {t:"30min",what:"⭐昨日Part2录音重听+找问题",note:"流畅度/语法错误/词汇贫乏点"},
+        ],
+        other:[
+          {t:"60min",what:"💤 休息+轻量复习",note:"调整状态，避免开局过度疲劳。可选：散步、看英语短视频"},
+        ],
+      },
+      { num:4, focus:"5/4 周一·阅读启动+陪练第1次",
+        vocab:[
+          {t:"30min",what:"📝 全科核心考点词 第2组（英译汉）",file:"📎 默写纸-雅思必会核心考点词"},
+          {t:"15min",what:"📝 听力179考点词 101-179",file:"📎 雅思听力179考点词单词表",note:"⚡听力179第1轮完成！"},
+          {t:"15min",what:"📐 137逻辑词·对比转折（17个）",file:"📎 137英语逻辑关系结构总结",note:"判断题/Heading题最常考"},
+          {t:"30min",what:"📕 地道口语360条 第16-20条",file:"📎 《雅思地道口语表达360条》"},
+        ],
+        practice:[
+          {t:"60min",what:"⭐【1对1课】阅读填空+判断题",note:"四大考点+T/F/NG区别"},
+          {t:"60min",what:"⭐【1对1课】口语Part2地点+物品",note:"⭐⭐扩展全部Part2类型"},
+          {t:"60min",what:"⭐【口语陪练1】完整Part1+2模拟",note:"⚡口语陪练正式启动！按真实考试节奏"},
+          {t:"60min",what:"课后练习：阅读填空+判断 剑14 Test1 P1+P2",file:"📎 剑14 Test 1",note:"运用四大考点+T/F/NG区分法"},
+        ],
+        other:[
+          {t:"30min",what:"⭐口语Part2地点+物品各3个 录音",file:"📎 2026年1-4月口语题库"},
+          {t:"30min",what:"⭐根据反馈修改Task1动态小作文（二稿）",note:"针对反馈点修改"},
+          {t:"15min",what:"📋 4步精简复盘：剑14 Test1 阅读 P1+P2",note:"错因/精读/替换/干扰项"},
+        ],
+      },
+      { num:5, focus:"5/5 周二·阅读题型完成+写作大作文",
+        vocab:[
+          {t:"30min",what:"📝 全科核心考点词 第2组（汉译英）",file:"📎 默写纸-雅思必会核心考点词"},
+          {t:"15min",what:"📝 阅读538核心54词（英译汉）",file:"📎 雅思阅读538考点词表",note:"阅读基础词汇"},
+          {t:"15min",what:"📝 写作必备短语 第1-30条",file:"📎 默写纸-雅思写作6.5分必备短语"},
+          {t:"30min",what:"📕 地道口语360条 第21-25条",file:"📎 《雅思地道口语表达360条》"},
+        ],
+        practice:[
+          {t:"60min",what:"⭐【1对1课】阅读单选+多选题",note:"单选与匹配的共通处"},
+          {t:"60min",what:"⭐【1对1课】写作大作文审题+结构",note:"⭐⭐避陷阱+议论文/报告文/混合文"},
+          {t:"60min",what:"⭐【口语陪练2】Part1+2 完整模拟",note:"对比第1次的进步"},
+          {t:"60min",what:"课后练习：阅读单选多选 剑14-15 各2篇",file:"📎 剑14-15 Reading"},
+        ],
+        other:[
+          {t:"30min",what:"⭐写作Task2第1篇（不限时，结构练习）",file:"📎 剑14 Test1 Task2",note:"先尝试，老师批改后改善"},
+          {t:"30min",what:"⭐口语Part1高频题5个再录音",file:"📎 2026年1-4月口语题库",note:"对比第1次录音"},
+          {t:"15min",what:"⭐【发老师批改】Task1静态小作文 + Task2第1篇",note:"老师集中批改"},
+        ],
+      },
+      { num:6, focus:"5/6 周三·听力进阶+第1次模考",
+        vocab:[
+          {t:"30min",what:"📝 全科核心考点词 第3组",file:"📎 默写纸-雅思必会核心考点词"},
+          {t:"15min",what:"📝 阅读538核心54词（汉译英）",file:"📎 雅思阅读538考点词表"},
+          {t:"15min",what:"📝 写作必备短语 第31-60条",file:"📎 默写纸-雅思写作6.5分必备短语"},
+          {t:"30min",what:"📕 地道口语360条 第26-30条",file:"📎 《雅思地道口语表达360条》"},
+        ],
+        practice:[
+          {t:"60min",what:"⭐【1对1课】听力长选+地图题",note:"长选逻辑结构法+地图333法则"},
+          {t:"180min",what:"🔥【第1次模考】剑14 Test 3 完整 听+阅+写",file:"📎 剑14 Test 3",note:"严格限时：听30min+阅60min+写60min。摸底当前真实水平！"},
+          {t:"60min",what:"⭐【口语陪练3】Part1+2 完整模拟",note:"重点：纠正发音+消除卡顿"},
+        ],
+        other:[
+          {t:"30min",what:"⭐口语Part2全本朗读3-5题（任选）",file:"📎 2026年1-4月口语题库"},
+          {t:"30min",what:"📋 模考当晚：错题分类+薄弱项识别",note:"听阅写各项错因初步统计"},
+          {t:"15min",what:"💤 早睡，明天深度复盘",note:"模考很耗能"},
+        ],
+      },
+      { num:7, focus:"5/7 周四·模考深度复盘+W1收官",
+        vocab:[
+          {t:"30min",what:"📝 模考错词集中复习+建立专属错词本",note:"听力/阅读错词分类整理"},
+          {t:"15min",what:"📕 地道口语360条 第31-35条",file:"📎 《雅思地道口语表达360条》",note:"⚡W1完成35条！"},
+          {t:"15min",what:"📝 写作必备短语 第61-90条",file:"📎 默写纸-雅思写作6.5分必备短语"},
+        ],
+        practice:[
+          {t:"60min",what:"📋【深度复盘】模考听力部分 4步",note:"Step1错因/Step2答案句标注/Step3词汇/Step4 Shadowing"},
+          {t:"60min",what:"📋【深度复盘】模考阅读部分 4步",note:"Step1错因/Step2精读/Step3替换/Step4干扰项"},
+          {t:"60min",what:"⭐【口语陪练4】完整Part1+2+3模拟",note:"⚡首次完整Part1-3，对照模考形式"},
+          {t:"60min",what:"⭐【发老师批改】模考Task1+Task2",note:"对比W1初稿，看进步"},
+        ],
+        other:[
+          {t:"30min",what:"⭐口语Part3录音回听+老师反馈整理",note:"识别Part3主要问题"},
+          {t:"30min",what:"⭐W1总结报告：4科分数估算+W2调整方向",note:"对照目标L6.5/R6.5/W6/S6找差距"},
+          {t:"15min",what:"⭐W1辛苦了！准备W2集中精改作文+口语题库通关",note:"W2节奏会更紧凑"},
+        ],
+      },
+    ],
+  },
+  {
+    week:2, phase:"强化期", title:"W2 · 写作精改+口语题库通关 (5/8-5/14)",
+    desc:"写作每天精改+口语题库全本通+第2次模考+听阅强化",
+    lessons:[
+      {type:"听力4",title:"匹配题",time:"1h",detail:"点线结合+词词替换"},
+      {type:"听力5",title:"听力综合训练",time:"1h",detail:"6题型综合应用"},
+      {type:"阅读3",title:"List of Heading",time:"1h",detail:"段落主题句套路"},
+      {type:"阅读4",title:"匹配及变体",time:"1h",detail:"细节型vs主旨型"},
+      {type:"写作4",title:"地图流程图",time:"1h",detail:"绝命题→送分题"},
+      {type:"写作5",title:"作文精改课·第1轮",time:"1h",detail:"针对学生作文逐句改"},
+      {type:"写作6",title:"作文精改课·第2轮",time:"1h",detail:"语法+词汇升级"},
+      {type:"口语4",title:"Part2事件类",time:"1h",detail:"⭐⭐⭐讲故事框架"},
+      {type:"口语5",title:"Part3 ORE法",time:"1h",detail:"⭐⭐⭐口语6分关键"},
+      {type:"口语6",title:"Part3综合深化",time:"1h",detail:"⭐⭐⭐高频话题深度论证"},
+    ],
+    days:[
+      { num:1, focus:"5/8 周五·听力匹配+写作精改",
+        vocab:[
+          {t:"30min",what:"📝 全科核心考点词 第4组（英译汉）",file:"📎 默写纸-雅思必会核心考点词"},
+          {t:"15min",what:"📝 阅读538重要171词 1-50",file:"📎 雅思阅读538考点词表"},
+          {t:"15min",what:"📐 137逻辑词·让步关系（8个）",file:"📎 137英语逻辑关系结构总结",note:"写作高分必备：regardless of/albeit/notwithstanding"},
+          {t:"30min",what:"📕 地道口语360条 第36-40条",file:"📎 《雅思地道口语表达360条》"},
+        ],
+        practice:[
+          {t:"60min",what:"⭐【1对1课】听力匹配题",note:"点线结合+词词替换→句句理解"},
+          {t:"60min",what:"⭐【1对1课】写作地图流程图",note:"绝命题→送分题"},
+          {t:"60min",what:"⭐【1对1课】口语Part2事件类",note:"⭐⭐⭐讲故事框架"},
+          {t:"60min",what:"课后练习：听力匹配 剑15-16各2组",file:"📎 剑15-16 Section 2-3"},
+        ],
+        other:[
+          {t:"45min",what:"⭐写作Task1第3篇 地图/流程图（限时20min+反思）",file:"📎 剑15 Test1 Task1",note:"运用上课方法"},
+          {t:"30min",what:"⭐口语Part2事件题3个 完整答+录音",file:"📎 2026年1-4月口语题库"},
+          {t:"15min",what:"⭐【发老师批改】Task1第3篇",note:"老师次日批改+反馈"},
+        ],
+      },
+      { num:2, focus:"5/9 周六·阅读Heading+口语Part3",
+        vocab:[
+          {t:"30min",what:"📝 全科核心考点词 第4组（汉译英）",file:"📎 默写纸-雅思必会核心考点词"},
+          {t:"15min",what:"📝 阅读538重要171词 51-100",file:"📎 雅思阅读538考点词表"},
+          {t:"15min",what:"📐 137逻辑词·解释例证（11个）",file:"📎 137英语逻辑关系结构总结",note:"写作大杀器：for instance/namely/in particular"},
+          {t:"30min",what:"📕 地道口语360条 第41-45条",file:"📎 《雅思地道口语表达360条》"},
+        ],
+        practice:[
+          {t:"60min",what:"⭐【1对1课】阅读List of Heading",note:"段落主题句套路"},
+          {t:"60min",what:"⭐【1对1课】写作精改课·第1轮（针对学生作文）",note:"⭐⭐老师逐句改+替换升级版"},
+          {t:"60min",what:"⭐【1对1课】口语Part3 ORE法",note:"⭐⭐⭐口语6分关键节点"},
+          {t:"60min",what:"⭐【口语陪练5】完整Part1+2+3",note:"重点：Part3 ORE法应用"},
+        ],
+        other:[
+          {t:"45min",what:"⭐写作Task2第2篇（限时40min）",file:"📎 剑15 Test1 Task2",note:"完整套用结构+论证+让步词"},
+          {t:"30min",what:"⭐口语Part3话题5个 ORE法+录音",file:"📎 2026年1-4月口语题库",note:"运用今天上课的ORE法"},
+          {t:"15min",what:"⭐【发老师批改】Task2第2篇",note:"重点反馈：结构+论证逻辑"},
+        ],
+      },
+      { num:3, focus:"5/10 周日·休息日（建议）",
+        vocab:[
+          {t:"30min",what:"📕 地道口语360条 第46-50条",file:"📎 《雅思地道口语表达360条》"},
+          {t:"15min",what:"📝 复习W1+W2前2天错词",note:"巩固为主"},
+        ],
+        practice:[
+          {t:"30min",what:"⭐口语Part3话题3个再录音",file:"📎 2026年1-4月口语题库",note:"昨日录音对照修正"},
+          {t:"30min",what:"⭐写作改写：Task1第3篇二稿",note:"根据老师反馈修改"},
+        ],
+        other:[
+          {t:"60min",what:"💤 休息+轻量复习",note:"半天调整，避免过度疲劳"},
+        ],
+      },
+      { num:4, focus:"5/11 周一·阅读匹配+写作Task2",
+        vocab:[
+          {t:"30min",what:"📝 全科核心考点词 第5组",file:"📎 默写纸-雅思必会核心考点词"},
+          {t:"15min",what:"📝 阅读538重要171词 101-171",file:"📎 雅思阅读538考点词表",note:"⚡538重要171完成！"},
+          {t:"15min",what:"📐 137逻辑词·目的关系（12个）",file:"📎 137英语逻辑关系结构总结"},
+          {t:"30min",what:"📕 地道口语360条 第51-55条",file:"📎 《雅思地道口语表达360条》"},
+        ],
+        practice:[
+          {t:"60min",what:"⭐【1对1课】阅读匹配及变体",note:"细节型vs主旨型解法"},
+          {t:"60min",what:"⭐【1对1课】写作精改课·第2轮",note:"⭐⭐语法+词汇升级专项"},
+          {t:"60min",what:"⭐【1对1课】口语Part3综合深化",note:"⭐⭐⭐高频话题深度论证"},
+          {t:"60min",what:"⭐【口语陪练6】完整Part1+2+3",note:"流畅度+连贯性提升"},
+        ],
+        other:[
+          {t:"45min",what:"⭐写作Task2第3篇（限时40min）",file:"📎 剑15 Test2 Task2",note:"运用2节精改课的反馈"},
+          {t:"30min",what:"⭐口语题库Part1全本朗读（前1/3，约10题）",file:"📎 2026年1-4月口语题库",note:"⚡口语题库全本通启动！"},
+          {t:"15min",what:"⭐【发老师批改】Task2第3篇",note:"对比第2篇看进步"},
+        ],
+      },
+      { num:5, focus:"5/12 周二·听力综合+口语Part1全本通",
+        vocab:[
+          {t:"30min",what:"📝 全科核心 第5组（汉译英）",file:"📎 默写纸-雅思必会核心考点词"},
+          {t:"15min",what:"📝 听力·必备词组短语 1-50",file:"📎 雅思听力必备词组短语表"},
+          {t:"30min",what:"📕 地道口语360条 第56-60条",file:"📎 《雅思地道口语表达360条》"},
+        ],
+        practice:[
+          {t:"60min",what:"⭐【1对1课】听力综合训练",note:"6题型综合应用"},
+          {t:"60min",what:"⭐【口语陪练7】完整Part1+2+3",note:"陪练第7次"},
+          {t:"60min",what:"⭐写作Task1第4篇（限时20min）",file:"📎 剑16 Test1 Task1",note:"再练一次，对比W1的进步"},
+          {t:"60min",what:"听力综合：剑15 Test1 完整40min+精听错题",file:"📎 剑15 Test 1 Listening"},
+        ],
+        other:[
+          {t:"45min",what:"⭐口语题库Part1全本（中1/3，约11题）",file:"📎 2026年1-4月口语题库"},
+          {t:"30min",what:"⭐口语Part2人物+地点+物品+事件 各1题录音",file:"📎 2026年1-4月口语题库",note:"覆盖4类Part2"},
+          {t:"15min",what:"📋 4步精简复盘：剑15 Test1 听力",note:"错因/标注/词汇/Shadowing"},
+        ],
+      },
+      { num:6, focus:"5/13 周三·第2次模考！",
+        vocab:[
+          {t:"15min",what:"📕 地道口语360条 第61-65条",file:"📎 《雅思地道口语表达360条》"},
+          {t:"15min",what:"📝 模考前快速过高频错词",note:"轻量复习"},
+        ],
+        practice:[
+          {t:"60min",what:"⭐【1对1课】机动调整：根据W2进度，弱项强化",note:"老师可灵活安排：写作/口语/听力等"},
+          {t:"180min",what:"🔥【第2次模考】剑16 Test 4 完整 听+阅+写",file:"📎 剑16 Test 4",note:"距离W1模考已7天，重点对比进步"},
+          {t:"60min",what:"⭐【口语陪练8】完整Part1+2+3",note:"模考形式陪练"},
+        ],
+        other:[
+          {t:"45min",what:"⭐口语题库Part1全本（后1/3，约12题）",file:"📎 2026年1-4月口语题库",note:"⚡Part1第1轮全本通完成！"},
+          {t:"30min",what:"📋 模考当晚：错题分类+对比W1模考",note:"听阅写各项进步幅度"},
+          {t:"15min",what:"💤 早睡，明天深度复盘",note:"模考很耗能"},
+        ],
+      },
+      { num:7, focus:"5/14 周四·W2收官+深度复盘",
+        vocab:[
+          {t:"30min",what:"📝 模考错词复习+全科核心 第6组",file:"📎 默写纸-雅思必会核心考点词"},
+          {t:"15min",what:"📝 听力·必备词组短语 51-100",file:"📎 雅思听力必备词组短语表"},
+          {t:"30min",what:"📕 地道口语360条 第66-70条",file:"📎 《雅思地道口语表达360条》",note:"⚡W2完成70条！"},
+        ],
+        practice:[
+          {t:"60min",what:"📋【深度复盘】模考听力 4步",note:"Step1错因/Step2标注/Step3词汇/Step4 Shadowing"},
+          {t:"60min",what:"📋【深度复盘】模考阅读 4步",note:"Step1错因/Step2精读/Step3替换/Step4干扰项"},
+          {t:"60min",what:"⭐【发老师批改】模考Task1+Task2",note:"对比W1模考作文，看进步"},
+          {t:"60min",what:"⭐口语题库Part2全本（前1/2，约23题朗读+录音5题）",file:"📎 2026年1-4月口语题库"},
+        ],
+        other:[
+          {t:"45min",what:"⭐写作Task2第4篇（限时40min）",file:"📎 剑16 Test1 Task2",note:"⚡Task2第4篇"},
+          {t:"30min",what:"⭐W2总结：4科分数变化+W3冲刺方向",note:"识别仍未突破的1-2类错因"},
+          {t:"15min",what:"⭐准备W3：高密度模考+口语题库2轮",note:"W3是最关键的一周"},
+        ],
+      },
+    ],
+  },
+  {
+    week:3, phase:"冲刺期", title:"W3 · 高密度模考+口语Part3深化 (5/15-5/21)",
+    desc:"3次完整模考+口语题库2轮+针对性查漏",
+    lessons:[
+      {type:"听力6",title:"听力综合冲刺",time:"1h",detail:"高频题型综合演练"},
+      {type:"阅读5",title:"阅读弱项专项",time:"1h",detail:"基于2次模考错因定向突破"},
+      {type:"写作7",title:"作文精改课·第3轮",time:"1h",detail:"高频错点专项"},
+      {type:"写作8",title:"写作冲6.0总策略",time:"1h",detail:"考前必备模板+高分句型"},
+      {type:"口语7",title:"Part1+Part3 高频话题",time:"1h",detail:"⭐⭐⭐冲刺6.0关键"},
+      {type:"陪练9-15",title:"口语密集陪练",time:"7h",detail:"⭐⭐⭐每天1次完整陪练"},
+    ],
+    days:[
+      { num:1, focus:"5/15 周五·阅读弱项专项",
+        vocab:[
+          {t:"30min",what:"📝 全科核心 高频错词 第3轮（错词重练）",file:"📎 默写纸-雅思必会核心考点词"},
+          {t:"15min",what:"📝 阅读538拓展596 第1-30",file:"📎 雅思阅读538考点词表",note:"轻量扩展"},
+          {t:"15min",what:"📐 137逻辑词·条件假设（12个）",file:"📎 137英语逻辑关系结构总结"},
+          {t:"30min",what:"📕 地道口语360条 第71-75条",file:"📎 《雅思地道口语表达360条》"},
+        ],
+        practice:[
+          {t:"60min",what:"⭐【1对1课】阅读弱项专项",note:"基于W1+W2两次模考错因定向突破"},
+          {t:"60min",what:"⭐【1对1课】写作精改课·第3轮",note:"⭐⭐高频错点专项"},
+          {t:"60min",what:"⭐【1对1课】口语Part1+Part3 高频话题",note:"⭐⭐⭐冲刺6.0关键"},
+          {t:"60min",what:"⭐【口语陪练9】完整Part1+2+3",note:"陪练第9次"},
+        ],
+        other:[
+          {t:"45min",what:"⭐口语题库Part2全本（后1/2，约23题朗读+录音5题）",file:"📎 2026年1-4月口语题库",note:"⚡Part2第1轮全本通完成！"},
+          {t:"30min",what:"⭐写作Task1第5篇（限时20min）",file:"📎 剑17 Test1 Task1",note:"基础题型最后一篇"},
+          {t:"15min",what:"⭐【发老师批改】Task1第5篇",note:"老师反馈"},
+        ],
+      },
+      { num:2, focus:"5/16 周六·🔥第3次模考",
+        vocab:[
+          {t:"15min",what:"📝 模考前快速过高频错词",note:"轻量复习"},
+          {t:"15min",what:"📕 地道口语360条 第76-80条",file:"📎 《雅思地道口语表达360条》"},
+        ],
+        practice:[
+          {t:"180min",what:"🔥【第3次模考】剑17 Test 2 完整 听+阅+写",file:"📎 剑17 Test 2",note:"对比W1+W2两次模考的趋势"},
+          {t:"60min",what:"⭐【1对1课】写作冲6.0总策略",note:"考前必备模板+高分句型"},
+          {t:"60min",what:"⭐【口语陪练10】完整Part1+2+3",note:"陪练第10次"},
+        ],
+        other:[
+          {t:"45min",what:"⭐口语题库Part3 高频话题5个+录音",file:"📎 2026年1-4月口语题库"},
+          {t:"30min",what:"📋 模考当晚：错题分类+3次模考综合趋势",note:"哪些项目稳定提升、哪些仍是瓶颈"},
+          {t:"15min",what:"💤 早睡，明天深度复盘",note:"模考耗能"},
+        ],
+      },
+      { num:3, focus:"5/17 周日·休息日（建议）",
+        vocab:[
+          {t:"30min",what:"📕 地道口语360条 第81-85条",file:"📎 《雅思地道口语表达360条》"},
+          {t:"15min",what:"📝 错词本扫一遍",note:"巩固为主"},
+        ],
+        practice:[
+          {t:"30min",what:"⭐口语Part2+Part3 各2题录音",file:"📎 2026年1-4月口语题库",note:"轻量保持手感"},
+          {t:"30min",what:"⭐写作改写：Task2第3篇/第4篇 二稿",note:"根据老师反馈整理"},
+        ],
+        other:[
+          {t:"60min",what:"💤 休息+轻量复习",note:"调整状态，准备最后冲刺"},
+        ],
+      },
+      { num:4, focus:"5/18 周一·模考深度复盘+陪练",
+        vocab:[
+          {t:"30min",what:"📝 模考错词集中复习+全科核心 高频错词",file:"📎 默写纸-雅思必会核心考点词"},
+          {t:"15min",what:"📝 写作必备短语 91-150（高频组）",file:"📎 默写纸-雅思写作6.5分必备短语",note:"考前必背"},
+          {t:"15min",what:"📐 137逻辑词·总结归纳（10个）",file:"📎 137英语逻辑关系结构总结",note:"结尾段必备：in conclusion/overall"},
+          {t:"30min",what:"📕 地道口语360条 第86-90条",file:"📎 《雅思地道口语表达360条》"},
+        ],
+        practice:[
+          {t:"60min",what:"📋【深度复盘】第3次模考听力+阅读 4步",note:"对比3次模考累积错因"},
+          {t:"60min",what:"⭐【1对1课】听力综合冲刺",note:"高频题型综合演练"},
+          {t:"60min",what:"⭐【口语陪练11】完整Part1+2+3",note:"陪练第11次"},
+          {t:"60min",what:"⭐【发老师批改】第3次模考Task1+Task2",note:"对比3次模考作文进步"},
+        ],
+        other:[
+          {t:"45min",what:"⭐写作Task2第5篇（限时40min）",file:"📎 剑17 Test2 Task2",note:"运用考前模板"},
+          {t:"30min",what:"⭐口语题库Part3 全本朗读（前1/2）",file:"📎 2026年1-4月口语题库"},
+          {t:"15min",what:"⭐【发老师批改】Task2第5篇"},
+        ],
+      },
+      { num:5, focus:"5/19 周二·真题密集+口语强化",
+        vocab:[
+          {t:"30min",what:"📝 全科核心 高频错词 第4轮",file:"📎 默写纸-雅思必会核心考点词"},
+          {t:"15min",what:"📝 写作必备短语 151-180",file:"📎 默写纸-雅思写作6.5分必备短语"},
+          {t:"15min",what:"📐 137逻辑词·时间顺序（16个）",file:"📎 137英语逻辑关系结构总结"},
+          {t:"30min",what:"📕 地道口语360条 第91-95条",file:"📎 《雅思地道口语表达360条》"},
+        ],
+        practice:[
+          {t:"60min",what:"⭐【1对1课】机动课：根据W3进度调整",note:"老师可灵活安排弱项强化"},
+          {t:"60min",what:"听力综合：剑18 Test1 完整40min",file:"📎 剑18 Test 1 Listening",note:"⚡开始用剑18！"},
+          {t:"60min",what:"阅读综合：剑18 Test1 完整60min",file:"📎 剑18 Test 1 Reading"},
+          {t:"60min",what:"⭐【口语陪练12】完整Part1+2+3",note:"陪练第12次"},
+        ],
+        other:[
+          {t:"30min",what:"⭐口语题库Part3 全本朗读（后1/2）",file:"📎 2026年1-4月口语题库",note:"⚡Part3第1轮全本通完成！"},
+          {t:"30min",what:"⭐口语Part2 5题再录音对比",note:"对比W1录音"},
+          {t:"15min",what:"📋 4步精简复盘：剑18 Test1 听力+阅读"},
+        ],
+      },
+      { num:6, focus:"5/20 周三·🔥第4次模考（最后一次）",
+        vocab:[
+          {t:"15min",what:"📝 模考前快速过高频错词",note:"轻量复习"},
+          {t:"15min",what:"📕 地道口语360条 第96-100条",file:"📎 《雅思地道口语表达360条》",note:"⚡完成100条！"},
+        ],
+        practice:[
+          {t:"180min",what:"🔥【第4次模考】剑18 Test 3 完整测试（终极模考）",file:"📎 剑18 Test 3",note:"距考试一周，最后一次完整模考。严格按真实考试时间和顺序"},
+          {t:"60min",what:"⭐【1对1课】听写口最后查漏",note:"老师根据模考即时反馈"},
+          {t:"60min",what:"⭐【口语陪练13】完整Part1+2+3",note:"陪练第13次"},
+        ],
+        other:[
+          {t:"45min",what:"⭐口语题库Part1+2+3 各5题再录音",file:"📎 2026年1-4月口语题库",note:"全本第2轮启动"},
+          {t:"30min",what:"📋 模考当晚：4次模考综合分数趋势图",note:"看进步曲线，识别瓶颈"},
+          {t:"15min",what:"💤 早睡，明天深度复盘"},
+        ],
+      },
+      { num:7, focus:"5/21 周四·W3收官+陪练加强",
+        vocab:[
+          {t:"30min",what:"📝 模考错词复习+全科核心错词总过",file:"📎 默写纸-雅思必会核心考点词"},
+          {t:"15min",what:"📐 137逻辑词·空间关系（18个）",file:"📎 137英语逻辑关系结构总结",note:"地图题专用，⚡10类全部学完！"},
+          {t:"30min",what:"📕 地道口语360条 第101-105条",file:"📎 《雅思地道口语表达360条》"},
+        ],
+        practice:[
+          {t:"60min",what:"📋【深度复盘】第4次模考听力+阅读 完整4步",note:"对4次模考累积错因总分析"},
+          {t:"60min",what:"⭐【发老师批改】第4次模考Task1+Task2",note:"考前最后一次精改"},
+          {t:"60min",what:"⭐【口语陪练14】完整Part1+2+3",note:"陪练第14次"},
+          {t:"60min",what:"⭐【口语陪练15】完整Part1+2+3",note:"⚡W3陪练总15次！"},
+        ],
+        other:[
+          {t:"45min",what:"⭐写作Task2第6篇（限时40min）",file:"📎 剑18 Test3 Task2",note:"考前最后1篇大作文"},
+          {t:"30min",what:"⭐W3总结：4次模考分数趋势+W4考前重点",note:"识别考前必须解决的1-2项"},
+          {t:"15min",what:"⭐准备W4：考前调整周，节奏放慢",note:"重点是状态调整+稳定输出"},
+        ],
+      },
+    ],
+  },
+  {
+    week:4, phase:"考前", title:"W4 · 考前调整+口语题库2轮+考试日 (5/22-5/27)",
+    desc:"轻量复习+口语题库第2轮+状态调整+考试",
+    lessons:[
+      {type:"陪练16-19",title:"考前每日陪练",time:"4h",detail:"⭐⭐⭐每日1次维持口语手感"},
+      {type:"机动课",title:"考前1-2节机动课",time:"1-2h",detail:"老师按学生即时状态安排"},
+    ],
+    days:[
+      { num:1, focus:"5/22 周五·全科轻量+陪练",
+        vocab:[
+          {t:"30min",what:"📝 错词总复习：全科+听力+阅读 高频错词",note:"考前重点复习"},
+          {t:"15min",what:"📝 写作必备短语 高频30个 最后过",file:"📎 默写纸-雅思写作6.5分必备短语"},
+          {t:"30min",what:"📕 地道口语360条 第106-110条",file:"📎 《雅思地道口语表达360条》"},
+          {t:"15min",what:"📐 137逻辑词·全部10类 错词扫一遍",file:"📎 137英语逻辑关系结构总结"},
+        ],
+        practice:[
+          {t:"60min",what:"⭐【1对1课】考前机动课1：写作模板+万能句",note:"考前必备写作工具包"},
+          {t:"60min",what:"⭐【口语陪练16】完整Part1+2+3",note:"考前陪练1"},
+          {t:"45min",what:"听力Section 1+2 限时1组（保持手感）",file:"📎 剑20 Test1 S1+S2",note:"不求新，求稳"},
+          {t:"30min",what:"阅读P1限时20min（保持手感）",file:"📎 剑20 Test1 P1"},
+        ],
+        other:[
+          {t:"45min",what:"⭐口语题库Part1全本第2轮 录音",file:"📎 2026年1-4月口语题库",note:"⚡题库第2轮启动"},
+          {t:"30min",what:"⭐写作模板整理：Task1+Task2 万能句",note:"自己整理一份考前小抄"},
+          {t:"15min",what:"💤 考前作息调整：开始早睡早起"},
+        ],
+      },
+      { num:2, focus:"5/23 周六·写作模板+口语高频",
+        vocab:[
+          {t:"30min",what:"📝 错词总复习+360条第1-50条快速扫",file:"📎 《雅思地道口语表达360条》"},
+          {t:"30min",what:"📕 地道口语360条 第111-115条",file:"📎 《雅思地道口语表达360条》"},
+        ],
+        practice:[
+          {t:"60min",what:"⭐【1对1课】考前机动课2：口语高频话题最终强化",note:"⭐⭐⭐口语模拟最后一刻"},
+          {t:"60min",what:"⭐【口语陪练17】完整Part1+2+3",note:"考前陪练2"},
+          {t:"45min",what:"⭐写作Task1+Task2 限时连写（60min完整模拟）",note:"模拟考试节奏"},
+          {t:"30min",what:"听力1套+阅读1篇 限时（保持兴奋度）",file:"📎 剑20 Test2 任意",note:"做完不分析太多"},
+        ],
+        other:[
+          {t:"45min",what:"⭐口语题库Part2全本第2轮 录音",file:"📎 2026年1-4月口语题库"},
+          {t:"30min",what:"⭐口语题库Part3 高频话题ORE法练习",note:"考前再过一遍ORE法"},
+          {t:"15min",what:"⭐发老师批改：今天的限时Task1+Task2",note:"考前最后一次批改"},
+        ],
+      },
+      { num:3, focus:"5/24 周日·休息+轻量保持",
+        vocab:[
+          {t:"30min",what:"📕 地道口语360条 第116-120条",file:"📎 《雅思地道口语表达360条》"},
+          {t:"15min",what:"📝 错词扫一眼，不要新学",note:"考前1周不要新学"},
+        ],
+        practice:[
+          {t:"30min",what:"⭐口语题库Part2+3 各3题录音",file:"📎 2026年1-4月口语题库",note:"轻量保持手感"},
+          {t:"30min",what:"翻看错题本：听阅写错因+解题思路",note:"复习不练新"},
+        ],
+        other:[
+          {t:"60min",what:"💤 半天休息+心理调整",note:"考前3天，状态最重要"},
+          {t:"15min",what:"⭐准备考试用品清单：身份证、准考证、文具、水",note:"开始检查"},
+        ],
+      },
+      { num:4, focus:"5/25 周一·考前2天·轻量+心态",
+        vocab:[
+          {t:"30min",what:"📝 高频错词最后扫一眼",note:"复习不新学"},
+          {t:"15min",what:"📕 地道口语360条 第121-125条",file:"📎 《雅思地道口语表达360条》"},
+        ],
+        practice:[
+          {t:"60min",what:"⭐【1对1课】考前机动课3：4科应试技巧总览",note:"考试当天注意事项+答题节奏"},
+          {t:"60min",what:"⭐【口语陪练18】完整Part1+2+3",note:"考前陪练3"},
+          {t:"30min",what:"听力Section 1限时（保持手感）",file:"📎 剑20 Test3 S1",note:"不要全套，10min即可"},
+          {t:"30min",what:"阅读P1限时20min",file:"📎 剑20 Test3 P1",note:"保持考试节奏"},
+        ],
+        other:[
+          {t:"30min",what:"⭐口语Part2 必须熟练的15个高频题最后过",file:"📎 2026年1-4月口语题库"},
+          {t:"15min",what:"⭐考前心态：发挥正常水平就是胜利",note:"不焦虑，相信26天的努力"},
+          {t:"15min",what:"⭐考试用品最后检查：身份证/准考证/文具/水/巧克力"},
+        ],
+      },
+      { num:5, focus:"5/26 周二·考前1天·休息为主",
+        vocab:[
+          {t:"20min",what:"📝 高频错词扫一眼（5min/类）",note:"轻松过"},
+          {t:"15min",what:"📕 地道口语360条 第126-130条",file:"📎 《雅思地道口语表达360条》",note:"⚡完成约130条！"},
+        ],
+        practice:[
+          {t:"60min",what:"⭐【口语陪练19】完整Part1+2+3 最后一次",note:"⚡考前最后陪练，保持兴奋度"},
+          {t:"30min",what:"翻看错题本：4次模考错因总览",note:"⚠️不再做新题！"},
+          {t:"30min",what:"翻看口语Part1+2+3关键句",note:"唤醒记忆即可"},
+        ],
+        other:[
+          {t:"30min",what:"⭐考试用品最后检查+准备早餐",note:"准考证、身份证、文具、水、巧克力、风油精"},
+          {t:"30min",what:"⭐熟悉考点路线+预订交通",note:"提前去考场踩点更好"},
+          {t:"15min",what:"轻松活动：散步/听音乐",note:"放松心情"},
+          {t:"30min",what:"⭐10点前睡觉！明天考试！",note:"早睡是最好的考前准备"},
+        ],
+      },
+      { num:6, focus:"🔥 5/27 周三·考试日！加油熊希玥！",
+        vocab:[],
+        practice:[
+          {t:"早上",what:"☀️ 吃好早餐+听一段简单对话热耳",note:"BBC 6 Minute English或简单对话，5-10min即可"},
+          {t:"考前",what:"📖 翻看口语关键句+写作模板",note:"只翻不背，唤醒记忆"},
+          {t:"🔥",what:"上考场！发挥正常水平就是胜利！",note:"熊希玥，你已经准备了26天，相信自己！"},
+        ],
+        other:[
+          {t:"考后",what:"🎉 放松休息，等待成绩",note:"不必复盘考题，享受考完的喜悦"},
+          {t:"备注",what:"💝 感谢老师辛苦陪伴+感谢自己的努力",note:"无论结果如何，这26天的付出都值得"},
+        ],
+      },
+    ],
+  },
+];
+
+// 里程碑
+const MILESTONES = [
+  { wk:"5/1", what:"🚀 启动！第1天 听+写+口 三课齐发，词汇启动" },
+  { wk:"5/4", what:"⚡ 口语陪练正式启动（W1 Day4）— 比母板提前15周！" },
+  { wk:"5/4", what:"⚡ 听力179考点词第1轮完成（W1 Day4）" },
+  { wk:"5/6", what:"🔥 第1次模考（剑14 Test 3）— 摸底当前真实水平" },
+  { wk:"5/11", what:"⚡ 阅读538重要171词完成（W2 Day4）" },
+  { wk:"5/13", what:"🔥 第2次模考（剑16 Test 4）+ 口语Part1全本通完成" },
+  { wk:"5/15", what:"⚡ 口语题库Part2第1轮全本通完成（W3 Day1）" },
+  { wk:"5/16", what:"🔥 第3次模考（剑17 Test 2）" },
+  { wk:"5/19", what:"⚡ 口语题库Part3第1轮全本通完成" },
+  { wk:"5/20", what:"🔥 第4次模考（剑18 Test 3）— 终极模考" },
+  { wk:"5/21", what:"⚡ 137逻辑词10类全部学完 + 15次陪练完成" },
+  { wk:"5/22", what:"⚡ 口语题库第2轮启动（考前调整周）" },
+  { wk:"5/26", what:"🌙 考前1天 · 早睡养精蓄锐" },
+  { wk:"5/27 周三", what:"🎯 考试日！加油熊希玥！目标6.5！" },
+];
+
+// 资料库
+const BOOKS = [
+  { name:"📕 默写纸·雅思必会核心考点词", use:"全科核心", color:"#e17055", detail:"<strong>使用方式</strong>：6组×（英译汉+汉译英）共12张默写纸。<br><strong>本计划安排</strong>：W1 Day1启动第1组，W1-W3共6组完整1轮+错词重练。<br><strong>每天投入</strong>：30min（每组分2天，先英译汉后汉译英）。<br><strong>验收标准</strong>：错词≤20%，错词建立专属错词本，W3-W4集中5轮重练。" },
+  { name:"📘 雅思听力179考点词单词表", use:"听力核心", color:"#0984e3", detail:"<strong>使用方式</strong>：179个高频词，必须能<strong>正确发音+秒写对</strong>。<br><strong>本计划安排</strong>：W1 Day1-Day4 共4天完成第1轮（每天约45个）。<br><strong>每天投入</strong>：15min。<br><strong>验收标准</strong>：听到发音能立刻拼写，是听力填空保命词汇。" },
+  { name:"📘 雅思听力必备词组短语表", use:"听力短语", color:"#0984e3", detail:"<strong>使用方式</strong>：听力高频短语，与179考点词配套。<br><strong>本计划安排</strong>：W2 Day5起开始接触，每天50个，W2-W4扫1轮重点。<br><strong>每天投入</strong>：15min。<br><strong>验收标准</strong>：能在听力上下文中快速识别。" },
+  { name:"📗 雅思阅读538考点词表", use:"阅读基础", color:"#00b894", detail:"<strong>使用方式</strong>：分3类——核心54→重要171→拓展596。<br><strong>本计划安排</strong>：W1 Day5学核心54词，W2 Day1-Day4学重要171（共171词），W3轻量学拓展596前30个。<br><strong>每天投入</strong>：15min。<br><strong>验收标准</strong>：核心54必须100%掌握，重要171掌握≥80%。" },
+  { name:"📐 137英语逻辑关系结构总结 (老师提供)", use:"四技能贯穿", color:"#6c5ce7", detail:"<strong>使用方式</strong>：10类逻辑词（因果/并列/对比/让步/时间/条件/解释/目的/总结/空间）。<br><strong>本计划安排</strong>：4周分配 — W1学因果/并列/对比转折；W2学让步/解释/目的；W3学条件/总结/时间；W4学空间+复习。<br><strong>每天投入</strong>：15min。<br><strong>应用</strong>：①听力Step2标信号词 ②阅读Step5段落逻辑梳理 ③写作每篇用≥3类 ④口语Part3刻意使用 having said that, in particular。" },
+  { name:"📙 默写纸·雅思写作6.5分必备短语", use:"写作短语", color:"#e17055", detail:"<strong>使用方式</strong>：~800个高频短语，按主题串联。<br><strong>本计划安排</strong>：W1 Day5起接触，每天30个，W1-W3扫高频180个，W4考前必背30个。<br><strong>每天投入</strong>：15min。<br><strong>价值</strong>：写作6.0关键在词汇丰富度，短语比单词更高分。" },
+  { name:"📕 2026年1-4月口语题库", use:"口语唯一", color:"#6c5ce7", detail:"<strong>使用方式</strong>：Part1 33题+Part2/3 46题，工作室99%还原率。<br><strong>本计划安排</strong>：<br>・W1：高频题朗读+录音<br>・W2 Day4-Day7：Part1全本通第1轮<br>・W3 Day1-Day5：Part2+Part3全本通第1轮<br>・W4 Day1-Day2：题库第2轮全本通<br><br><strong>每天投入</strong>：30-45min（W3起达60min）。<br><strong>验收标准</strong>：Part1每题2-3句流畅作答；Part2能讲足2min；Part3用ORE法回应。" },
+  { name:"📕 雅思地道口语表达360条 (Oliver老师著作) ⚠️需自购", use:"口语提分", color:"#e17055", detail:"<strong>🛒 购买方式</strong>：<strong>淘宝 / 拼多多 搜索《雅思地道口语表达360条》</strong>即可购买！<br><strong>使用方式</strong>：每条配真实对话+翻译逻辑+知识拓展。<br><strong>本计划安排</strong>：W1 Day1起每天5条，4周共学约130条。<br><strong>每天投入</strong>：30min（精读对话+背英文+理解Oliver小贴士）。<br><strong>价值</strong>：口语4.5→6.0关键武器！地道表达直接拉高词汇分项。<br><strong>验收</strong>：每5天复习一次，能在Part1+2回答中自然使用5+条。" },
+  { name:"📚 剑桥真题 14-20（共7本·28套）", use:"练习+模考", color:"#2a2520", detail:"<strong>本计划只用其中12-15套</strong>（26天做不完28套）：<br>・<strong>剑14-15</strong>：W1基础期题型拆解练习（每节课配套1-2组）<br>・<strong>剑16-17</strong>：W2强化期整套限时+第2次模考（剑16 Test4）+第3次模考（剑17 Test2）<br>・<strong>剑18</strong>：W3冲刺期第4次模考（Test 3）+综合训练<br>・<strong>剑19</strong>：W3-W4备用资源<br>・<strong>剑20</strong>：W4考前1周轻量练习+保持手感<br><br><strong>每次做完真题必须按4步精简流程深度复盘</strong>（见使用说明）。<br><strong>核心</strong>：做完≠学到，复盘才是真题的价值。" },
+];
+
+// 课程总览
+const COURSES = [
+  { subj:"听力", color:"#0984e3", total:"6h × 6节", items:[
+    "S1基础填空 (1h) · W1 Day1",
+    "S2-4填空+短选 (1h) · W1 Day2",
+    "长选+地图题 (1h) · W1 Day6",
+    "匹配题 (1h) · W2 Day1",
+    "听力综合训练 (1h) · W2 Day5",
+    "听力综合冲刺 (1h) · W3 Day4",
+  ]},
+  { subj:"阅读", color:"#00b894", total:"5h × 5节", items:[
+    "填空+判断 (1h) · W1 Day4",
+    "单选+多选 (1h) · W1 Day5",
+    "List of Heading (1h) · W2 Day2",
+    "匹配及变体 (1h) · W2 Day4",
+    "阅读弱项专项 (1h) · W3 Day1",
+  ]},
+  { subj:"写作", color:"#e17055", total:"8h × 8节（重点）", items:[
+    "动态小作文 (1h) · W1 Day1",
+    "静态小作文 (1h) · W1 Day2",
+    "大作文审题+结构 (1h) · W1 Day5",
+    "地图流程图 (1h) · W2 Day1",
+    "作文精改课·第1轮 (1h) · W2 Day2",
+    "作文精改课·第2轮 (1h) · W2 Day4",
+    "作文精改课·第3轮 (1h) · W3 Day1",
+    "写作冲6.0总策略 (1h) · W3 Day2",
+  ]},
+  { subj:"口语", color:"#6c5ce7", total:"6h × 6节（主攻！）", items:[
+    "Part1三类问法 (1h) · W1 Day1",
+    "Part2人物类 (1h) · W1 Day2",
+    "Part2地点+物品 (1h) · W1 Day4",
+    "Part2事件类 (1h) · W2 Day1",
+    "Part3 ORE法 (1h) · W2 Day2",
+    "Part3综合深化 (1h) · W2 Day4",
+    "Part1+Part3高频 (1h) · W3 Day1",
+  ]},
+  { subj:"陪练", color:"#fd9644", total:"19h × 19节（密集！）", items:[
+    "W1：陪练1-4（启动期）",
+    "W2：陪练5-8（强化期）",
+    "W3：陪练9-15（高密度，每天1次）",
+    "W4：陪练16-19（考前维持手感）",
+  ]},
+  { subj:"机动课", color:"#f0a500;color:#fff", total:"3-4h（备用）", items:[
+    "W2 Day6：模考后弱项强化",
+    "W3 Day5：根据进度调整",
+    "W4 Day1+2：考前模板+口语高频",
+    "W4 Day4：4科应试技巧总览",
+  ]},
+];
+
+const STRATEGY = {
+  target:"总分6.5 · L6.5 + R6.5 + W6.0 + S6.0 = 25/4 = 6.25 → 四舍五入6.5（单科≥6.0）",
+  realTarget:"差异化策略：口语主攻（4.5→6.0，跨1.5）；听阅向上拉分（+1.0/+0.5）；写作守6.0",
+  approach:"8h/天 × 23个学习日 ≈ 180h · 8篇精改作文 · 4次完整模考 · 19h口语陪练",
+  exams:"2026/5/27 一次性考过！",
+};
+
+let selectedWeek = 0;
+let selectedDay = 0;
+let doneMap = {};
+
+
+function showTab(id, btn) {
+  document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(t => t.classList.remove('active'));
+  document.getElementById('tab-' + id).classList.add('active');
+  btn.classList.add('active');
+}
+
+function jumpWeek(idx) {
+  selectedWeek = idx;
+  selectedDay = 0;
+  renderWeekGrid();
+  renderWeekDetail();
+}
+
+function selectWeek(i) {
+  selectedWeek = i;
+  selectedDay = 0;
+  renderWeekGrid();
+  renderWeekDetail();
+}
+
+function selectDay(i) {
+  selectedDay = i;
+  renderWeekDetail();
+}
+
+function toggleTask(key) {
+  doneMap[key] = !doneMap[key];
+  renderWeekDetail();
+}
+
+function isDayComplete(wIdx, dIdx) {
+  const day = WEEKS[wIdx].days[dIdx];
+  const tasks = [...(day.vocab||[]), ...(day.practice||[]), ...(day.other||[])];
+  if (tasks.length === 0) return false;
+  return tasks.every((_, i) => doneMap[`${wIdx}-${dIdx}-${i}`]);
+}
+
+function isWeekComplete(wIdx) {
+  return WEEKS[wIdx].days.every((_, dIdx) => isDayComplete(wIdx, dIdx));
+}
+
+function renderWeekGrid() {
+  const grid = document.getElementById('weekGrid');
+  grid.innerHTML = WEEKS.map((w, i) => {
+    const sel = i === selectedWeek;
+    const c = phaseColors[w.phase];
+    const done = isWeekComplete(i);
+    return `<button class="week-btn" onclick="selectWeek(${i})" style="border:2px solid ${sel ? c : (done ? '#b8e6cc' : '#e8e4df')};background:${sel ? c+'15' : (done ? '#f0fff4' : '#fff')};color:${sel ? c : '#888'}">
+      <div class="num">W${w.week}</div>
+      <div class="lbl">${done ? '✓ 完成' : w.phase}</div>
+    </button>`;
+  }).join('');
+}
+
+function renderWeekDetail() {
+  const w = WEEKS[selectedWeek];
+  const c = phaseColors[w.phase];
+  const d = w.days[selectedDay];
+  const tasks = [...(d.vocab||[]), ...(d.practice||[]), ...(d.other||[])];
+  const cnt = tasks.filter((_, i) => doneMap[`${selectedWeek}-${selectedDay}-${i}`]).length;
+
+  let html = `<div class="week-banner" style="background:${c}10;border-left:4px solid ${c}">
+    <div style="font-size:11px;font-weight:700;color:${c};letter-spacing:1px">${w.phase} · WEEK ${w.week}</div>
+    <div style="font-size:15px;font-weight:700;margin-top:2px">${w.title}</div>
+    <div style="font-size:11px;color:#666;margin-top:3px">${w.desc}</div>
+  </div>`;
+
+  if (w.lessons && w.lessons.length > 0) {
+    html += `<div style="margin-bottom:14px">`;
+    html += `<div class="section-label" style="color:${c}">📖 本周课程安排</div>`;
+    w.lessons.forEach(l => {
+      html += `<div class="lesson-card">
+        <span class="lesson-tag">${l.type}</span>
+        <span class="lesson-title">${l.title}</span>
+        <span style="font-size:10px;color:#888;margin-left:6px">⏱ ${l.time}</span>
+        ${l.detail ? `<div class="lesson-detail">${l.detail}</div>` : ''}
+      </div>`;
+    });
+    html += `</div>`;
+  }
+
+  html += `<div class="day-tabs">`;
+  w.days.forEach((day, i) => {
+    const active = i === selectedDay;
+    const done = isDayComplete(selectedWeek, i);
+    html += `<button class="day-tab ${active?'active':''}" onclick="selectDay(${i})">
+      Day ${i+1}<span class="checkmark">${done ? '✓' : ''}</span>
+    </button>`;
+  });
+  html += `</div>`;
+
+  const sections = [
+    { label:'📝 词汇默写+逻辑词', items:d.vocab, color:'#f0a500', offset:0 },
+    { label:'📖 1对1课+做题练习', items:d.practice, color:'#e17055', offset:(d.vocab||[]).length },
+    { label:'🎯 口语+其他', items:d.other, color:'#0984e3', offset:(d.vocab||[]).length + (d.practice||[]).length },
+  ].filter(s => s.items && s.items.length > 0);
+
+  html += `<div class="day-header" style="background:${c}08;border:2px solid ${c}25">
+    <div style="display:flex;justify-content:space-between;align-items:center">
+      <div><span style="font-size:10px;font-weight:700;color:${c};background:${c}15;padding:2px 7px;border-radius:4px">学习日 ${selectedDay+1}</span>
+      <span style="font-size:13px;font-weight:700;margin-left:8px">${d.focus}</span></div>
+      <span style="font-size:11px;color:#888">${cnt}/${tasks.length}</span>
+    </div>
+    <div class="progress-bar"><div class="progress-fill" style="background:${c};width:${tasks.length ? cnt/tasks.length*100 : 0}%"></div></div>
+  </div>`;
+
+  sections.forEach(sec => {
+    html += `<div style="margin-bottom:14px"><div class="section-label" style="color:${sec.color}">${sec.label}</div>`;
+    sec.items.forEach((item, i) => {
+      const key = `${selectedWeek}-${selectedDay}-${sec.offset + i}`;
+      const done = doneMap[key];
+      html += `<div class="task-card ${done?'done':''}" onclick="toggleTask('${key}')">
+        <div class="task-check">${done ? '✅' : '⬜'}</div>
+        <div style="flex:1;min-width:0">
+          <div style="display:flex;gap:6px;align-items:center;flex-wrap:wrap">
+            <span class="task-time">${item.t}</span>
+            <span class="task-what" style="${done?'text-decoration:line-through':''}">${item.what}</span>
+          </div>
+          ${item.note ? `<div class="task-note">${item.note}</div>` : ''}
+          ${item.file ? `<div class="task-file">${item.file}</div>` : ''}
+        </div>
+      </div>`;
+    });
+    html += '</div>';
+  });
+
+  document.getElementById('weekDetail').innerHTML = html;
+}
+
+function renderBooks() {
+  let html = `<div class="target-box">
+    <h3 style="font-size:14px;color:#e17055;margin-bottom:8px">🎯 考试策略</h3>
+    <div style="font-size:11.5px;color:#555;line-height:1.8;margin-bottom:10px">
+      <strong>目标：</strong>${STRATEGY.target}<br>
+      <strong>差异化策略：</strong>${STRATEGY.realTarget}<br>
+      <strong>学习方式：</strong>${STRATEGY.approach}<br>
+      <strong>考试规划：</strong>${STRATEGY.exams}
+    </div>
+    <div class="target-row"><span class="target-skill">🎧 听力</span><span class="target-score">6.5</span></div>
+    <div class="target-row"><span class="target-skill">📖 阅读</span><span class="target-score">6.5</span></div>
+    <div class="target-row"><span class="target-skill">✍️ 写作</span><span class="target-score">6.0</span></div>
+    <div class="target-row"><span class="target-skill">🗣️ 口语</span><span class="target-score">6.0</span></div>
+    <div class="target-row" style="border-top:2px solid #e17055;padding-top:8px;margin-top:4px"><span class="target-skill" style="color:#e17055;font-weight:700">总分</span><span class="target-score" style="font-size:20px">6.5</span></div>
+  </div>`;
+
+  html += `<h3 style="font-size:14px;font-weight:700;color:#e17055;margin:14px 0 10px">🎓 1对1课程总览（约 28h 课时 + 19h 陪练 + 3-4h 机动 ≈ 50h+）</h3>`;
+  COURSES.forEach(c => {
+    html += `<div class="book-card" style="border-left:4px solid ${c.color}">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
+        <span class="book-name" style="color:${c.color}">${c.subj}</span>
+        <span class="book-tag" style="color:${c.color};background:${c.color}15">${c.total}</span>
+      </div>
+      <div class="book-detail">${c.items.map(i => '· ' + i).join('<br>')}</div>
+    </div>`;
+  });
+
+  html += `<h3 style="font-size:14px;font-weight:700;color:#e17055;margin:18px 0 10px">📚 资料使用指南（共9份资料：6份默写纸+1份逻辑词+1份口语题库+1份口语360+剑14-20真题）</h3>`;
+  BOOKS.forEach(b => {
+    html += `<div class="book-card">
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:8px">
+        <span class="book-name">${b.name}</span>
+        <span class="book-tag" style="color:${b.color};background:${b.color}15;flex-shrink:0">${b.use}</span>
+      </div>
+      <div class="book-detail">${b.detail}</div>
+    </div>`;
+  });
+
+  html += `<div class="info-box" style="background:#fff8e1;border:1px solid #ffe0b2">
+    <strong style="color:#e17055">⚡熊希玥6.5冲刺核心策略：</strong><br>
+    1. <strong>口语主攻（4.5→6.0）</strong>：6h课程 + 19h陪练 + 题库2轮全本通 + 360条130条 ≈ 60h投入<br>
+    2. <strong>写作守6.0</strong>：8h课程 + 8篇精改（每篇3轮迭代）+ 写作短语 ≈ 45h投入<br>
+    3. <strong>听力提1.0</strong>：6h课程 + 真题精听+Shadowing + 听力179词汇 ≈ 40h投入<br>
+    4. <strong>阅读维持6.0+</strong>：5h课程 + 真题限时 + 替换提取 ≈ 25h投入<br>
+    5. <strong>4次模考</strong>：W1/W2/W3各1次+W3 Day6终极模考 — 跟踪进步曲线
+  </div>`;
+
+  html += `<div class="info-box" style="background:#f0fff4;border:1px solid #b8e6cc">
+    <strong style="color:#00b894">📝 8篇精改作文清单：</strong><br>
+    Task1（4篇）：动态(W1 D1) / 静态(W1 D2) / 地图(W2 D1) / 限时再练(W3 D1)<br>
+    Task2（4篇）：第1篇结构(W1 D5) / 第2篇论证(W2 D2) / 第3篇升级(W2 D4) / 第4篇冲刺(W2 D7) / 第5篇套模板(W3 D4) / 第6篇收官(W3 D7)<br>
+    <span style="color:#888;font-size:11px">实际共6-8篇灵活调整，确保每篇都有"初稿+老师批改+二稿"三轮迭代</span>
+  </div>`;
+
+  document.getElementById('booksContent').innerHTML = html;
+}
+
+function renderMilestones() {
+  let html = `<p style="color:#888;font-size:12px;margin-bottom:14px">26天关键节点 — 对照检查有没有掉队：</p>`;
+  MILESTONES.forEach(m => {
+    html += `<div class="milestone-row"><div class="milestone-week">${m.wk}</div>
+      <div class="milestone-dot"></div><div class="milestone-text">${m.what}</div></div>`;
+  });
+  html += `<div class="info-box" style="background:#f0fff4;border:1px solid #b8e6cc;margin-top:16px">
+    <strong style="color:#00b894">26天内你将完成：</strong><br>
+    📝 词汇：全科核心+听力179+阅读538重要171+写作短语180+360条130条<br>
+    📖 4次完整模考（剑14/16/17/18）+ 真题12-15套核心练习<br>
+    🔬 每套真题按 4步精简复盘流程 深度处理<br>
+    ✍️ 8篇精改作文（Task1×4+Task2×4），每篇3轮迭代<br>
+    🗣️ 口语6节课 + 19h陪练 + 题库2轮全本通 + 360条 130条<br>
+    🎧 听力6节课 + 听力179词汇 + 错题Shadowing<br>
+    📚 1对1课28h + 陪练19h + 机动课3-4h ≈ 50h+ 课程时间<br><br>
+    <strong style="color:#e17055">考试目标：2026年5月27日 总分6.5 · 单科≥6.0！💪</strong>
+  </div>`;
+  document.getElementById('milestoneContent').innerHTML = html;
+}
+
+function updateCountdown() {
+  const exam = new Date('2026-05-27T00:00:00');
+  const now = new Date();
+  const diff = Math.max(0, Math.ceil((exam - now) / (1000*60*60*24)));
+  document.getElementById('cdNum').textContent = diff + ' 天';
+}
+
+updateCountdown();
+renderWeekGrid();
+renderWeekDetail();
+renderBooks();
+renderMilestones();
+</script>
+</body>
+</html>
