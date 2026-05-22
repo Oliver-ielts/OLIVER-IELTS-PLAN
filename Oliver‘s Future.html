@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>张峻诚｜保底工作收入规划 · 最终统整版</title>
+<style>
+:root{
+  --paper:#f4efe6;
+  --paper2:#ece4d6;
+  --card:#fbf8f1;
+  --ink:#2b2620;
+  --soft:#5b5346;
+  --line:#d8cdb9;
+  --gold:#9a7b3f;
+  --green:#3f6b54;
+  --green2:#e3ede4;
+  --blue:#3a5f7d;
+  --blue2:#e2eaf0;
+  --rust:#a4582f;
+  --rust2:#f1e2d6;
+  --purple:#756999;
+  --purple2:#e9e6f3;
+  --red:#9a3f32;
+  --red2:#f3ded7;
+  --shadow:0 1px 0 rgba(0,0,0,.04),0 8px 24px -18px rgba(60,45,20,.45);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  color:var(--ink);
+  background:
+    radial-gradient(1100px 550px at 80% -10%, rgba(154,123,63,.10), transparent 60%),
+    var(--paper);
+  font-family:"Times New Roman","Microsoft YaHei","微软雅黑","PingFang SC","Noto Sans SC",sans-serif;
+  line-height:1.72;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:1120px;margin:0 auto;padding:42px 28px 86px}
+.hero{
+  border:1px solid var(--line);
+  background:linear-gradient(180deg,var(--card),var(--paper2));
+  border-radius:18px;
+  padding:36px 38px 30px;
+  box-shadow:var(--shadow);
+  position:relative;
+  overflow:hidden;
+}
+.hero:after{
+  content:"稳 · 轻 · 准";
+  position:absolute;right:26px;bottom:0;
+  color:rgba(154,123,63,.08);
+  font-size:84px;font-weight:700;letter-spacing:8px;
+}
+.kicker{font-family:"Times New Roman",serif;letter-spacing:.3em;font-size:12px;color:var(--gold);text-transform:uppercase}
+h1{font-size:30px;line-height:1.25;margin:.35em 0 .15em}
+.sub{margin:0;color:var(--soft);font-size:15px}
+.meta{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+.meta span{font-size:12.5px;color:var(--soft);border:1px solid var(--line);background:var(--card);padding:5px 11px;border-radius:999px}
+h2{font-size:21px;margin:48px 0 6px;letter-spacing:.5px;display:flex;gap:12px;align-items:baseline}
+h2 .n{font-family:"Times New Roman",serif;color:var(--gold);font-size:14px;letter-spacing:.15em}
+.lead{font-size:14.5px;color:var(--soft);margin:0 0 16px}
+.grid{display:grid;gap:14px}
+.g2{grid-template-columns:1fr 1fr}
+.g3{grid-template-columns:repeat(3,1fr)}
+.g4{grid-template-columns:repeat(4,1fr)}
+.card{
+  background:var(--card);
+  border:1px solid var(--line);
+  border-radius:14px;
+  padding:17px 18px;
+  box-shadow:var(--shadow);
+}
+.card h3{font-size:16px;margin:0 0 8px;color:var(--ink)}
+.card p{margin:4px 0;color:var(--soft);font-size:14px}
+.big-num{font-family:"Times New Roman",serif;font-size:25px;color:var(--ink);line-height:1.25}
+.lab{font-size:12.5px;color:var(--soft);margin-top:5px}
+.tag{display:inline-block;border-radius:999px;padding:2px 8px;font-size:12px;margin:2px 4px 2px 0}
+.t-green{background:var(--green2);color:var(--green)}
+.t-blue{background:var(--blue2);color:var(--blue)}
+.t-rust{background:var(--rust2);color:var(--rust)}
+.t-purple{background:var(--purple2);color:var(--purple)}
+.t-red{background:var(--red2);color:var(--red)}
+table{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden;box-shadow:var(--shadow);font-size:14px}
+th,td{border-bottom:1px solid var(--line);padding:11px 12px;vertical-align:top;text-align:left}
+th{background:#e9dfcf;color:#2e2924;font-weight:700}
+tr:last-child td{border-bottom:none}
+td.num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+.nowrap{white-space:nowrap}
+.ok{color:var(--green);font-weight:700}
+.warn{color:var(--rust);font-weight:700}
+.danger{color:var(--red);font-weight:700}
+.section-note{
+  background:linear-gradient(180deg,#fbf7ee,#f4ead8);
+  border:1px solid var(--line);
+  border-radius:16px;
+  padding:18px 20px;
+  box-shadow:var(--shadow);
+}
+.section-note b{color:var(--rust)}
+.logic{
+  counter-reset:item;
+}
+.logic .card{position:relative;padding-left:54px}
+.logic .card:before{
+  counter-increment:item;
+  content:counter(item, decimal-leading-zero);
+  position:absolute;left:18px;top:18px;
+  font-family:"Times New Roman",serif;color:var(--gold);font-size:15px;font-weight:700;
+}
+.months{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.month{
+  background:var(--card);border:1px solid var(--line);border-radius:14px;
+  padding:16px 17px;box-shadow:var(--shadow);border-top:4px solid var(--blue)
+}
+.month.s{border-top-color:var(--green)}
+.month.a{border-top-color:var(--rust)}
+.month.b{border-top-color:var(--blue)}
+.month.c{border-top-color:var(--purple)}
+.mhead{display:flex;justify-content:space-between;gap:10px;align-items:flex-start;margin-bottom:10px}
+.mtitle{font-size:18px;font-weight:700}
+.badge{font-size:12px;border-radius:999px;padding:3px 9px;white-space:nowrap}
+.month.s .badge{background:var(--green2);color:var(--green)}
+.month.a .badge{background:var(--rust2);color:var(--rust)}
+.month.b .badge{background:var(--blue2);color:var(--blue)}
+.month.c .badge{background:var(--purple2);color:var(--purple)}
+.mgrid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:10px 0}
+.mbox{border:1px solid var(--line);background:var(--paper);border-radius:10px;padding:8px 10px}
+.mbox .k{font-size:11.5px;color:var(--soft);letter-spacing:.06em;font-family:"Times New Roman",serif;text-transform:uppercase}
+.mbox .v{font-size:14.5px;font-weight:700;margin-top:2px}
+.mline{font-size:13px;color:var(--soft);margin:7px 0}
+.mline b{color:var(--ink)}
+.bar{height:7px;background:var(--paper2);border-radius:8px;overflow:hidden;margin:8px 0 4px}
+.bar i{display:block;height:100%;border-radius:8px;background:var(--blue)}
+.month.s .bar i{background:var(--green)}
+.month.a .bar i{background:var(--rust)}
+.month.c .bar i{background:var(--purple)}
+.cash{font-size:12.5px;border-radius:8px;padding:7px 9px;margin-top:8px;background:var(--green2);color:var(--green)}
+.cash.out{background:var(--rust2);color:var(--rust)}
+ul{margin:6px 0 0 18px;padding:0}
+li{margin:2px 0}
+.footer{font-size:12.5px;color:var(--soft);margin-top:40px;border-top:1px solid var(--line);padding-top:18px}
+
+.trigger-box{background:var(--paper);border:1px dashed var(--line);border-radius:10px;padding:9px 11px;margin-top:8px;font-size:12.5px;color:var(--soft);line-height:1.6}
+.trigger-box b{color:var(--ink)}
+.trigger-box .warn{color:var(--rust);font-weight:700}
+@media(max-width:860px){
+  .g2,.g3,.g4,.months{grid-template-columns:1fr}
+  .wrap{padding:26px 16px 60px}
+  .hero{padding:28px 22px}
+  h1{font-size:24px}
+}
+/* ===== 第10节 周度打卡系统 ===== */
+.ck-dash{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin:6px 0 18px}
+.ck-dash .d{background:linear-gradient(180deg,var(--card),var(--paper2));border:1px solid var(--line);border-radius:14px;padding:14px 12px;box-shadow:var(--shadow);text-align:center}
+.ck-dash .d .num{font-family:"Times New Roman",serif;font-size:24px;color:var(--ink);line-height:1.1}
+.ck-dash .d .num small{font-size:12px;color:var(--soft)}
+.ck-dash .d .lab{font-size:12px;color:var(--soft);margin-top:4px}
+.ck-dash .d.hl .num{color:var(--green)}
+.ck-tools{display:flex;flex-wrap:wrap;gap:9px;align-items:center;margin:-4px 0 16px}
+.ck-btn{font-family:inherit;font-size:13px;cursor:pointer;border:1px solid var(--line);background:var(--card);color:var(--soft);border-radius:999px;padding:7px 15px;transition:.15s}
+.ck-btn:hover{border-color:var(--gold);color:var(--ink)}
+.ck-btn.primary{background:var(--gold);color:#fff;border-color:var(--gold)}
+.ck-hint{font-size:12px;color:var(--soft)}
+details.ckm{background:var(--card);border:1px solid var(--line);border-radius:14px;margin-bottom:13px;box-shadow:var(--shadow);overflow:hidden;border-top:4px solid var(--blue)}
+details.ckm.s{border-top-color:var(--green)} details.ckm.a{border-top-color:var(--rust)} details.ckm.c{border-top-color:var(--purple)}
+details.ckm>summary{list-style:none;cursor:pointer;padding:14px 17px;display:flex;align-items:center;gap:11px;flex-wrap:wrap;user-select:none}
+details.ckm>summary::-webkit-details-marker{display:none}
+details.ckm>summary:after{content:"▸";margin-left:auto;color:var(--gold);font-size:13px;transition:.2s}
+details.ckm[open]>summary:after{transform:rotate(90deg)}
+.ckm .mlabel{font-size:16px;font-weight:700}
+.ckm .mbadge{font-size:11.5px;border-radius:999px;padding:2px 9px;white-space:nowrap}
+.ckm.b .mbadge{background:var(--blue2);color:var(--blue)} .ckm.s .mbadge{background:var(--green2);color:var(--green)} .ckm.a .mbadge{background:var(--rust2);color:var(--rust)} .ckm.c .mbadge{background:var(--purple2);color:var(--purple)}
+.ckm .mfloor{font-size:12.5px;color:var(--soft)} .ckm .mfloor b{color:var(--ink)}
+.ckm .mprog{font-family:"Times New Roman",serif;font-size:12.5px;color:var(--soft)} .ckm .mprog b{color:var(--green)}
+.ckm .mcash{font-size:11.5px;border-radius:7px;padding:2px 9px;background:var(--green2);color:var(--green)}
+.ckm .mcash.out{background:var(--rust2);color:var(--rust)}
+.ckbody{padding:2px 17px 17px;border-top:1px solid var(--line)}
+.ck-online{display:flex;align-items:center;gap:13px;flex-wrap:wrap;background:var(--blue2);border:1px solid #cdd9e2;border-radius:12px;padding:11px 14px;margin:13px 0}
+.ck-online .t{font-size:13.5px;font-weight:700;color:var(--blue)} .ck-online .t small{font-weight:400;color:var(--soft);font-size:12px}
+.stepper{display:inline-flex;align-items:center;border:1px solid var(--line);border-radius:999px;overflow:hidden;background:var(--card)}
+.stepper button{font-family:inherit;border:none;background:transparent;width:32px;height:32px;font-size:18px;cursor:pointer;color:var(--blue);line-height:1}
+.stepper button:hover{background:var(--blue2)}
+.stepper .cnt{min-width:34px;text-align:center;font-family:"Times New Roman",serif;font-size:17px;font-weight:700}
+.ck-online .earn{margin-left:auto;font-size:13px;color:var(--soft)} .ck-online .earn b{font-family:"Times New Roman",serif;color:var(--blue);font-size:15px}
+table.ckwk{width:100%;border-collapse:separate;border-spacing:0;font-size:13.5px;box-shadow:none;border:none}
+table.ckwk th{text-align:left;font-size:11.5px;color:var(--soft);font-family:"Times New Roman",serif;letter-spacing:.05em;font-weight:400;padding:4px 8px;border-bottom:1px solid var(--line);background:transparent}
+table.ckwk td{padding:8px;border-bottom:1px solid var(--line);vertical-align:middle}
+table.ckwk tr:last-child td{border-bottom:none}
+table.ckwk tr.done{background:var(--green2)}
+.wk-name{font-weight:700;white-space:nowrap} .wk-date{font-family:"Times New Roman",serif;font-size:11.5px;color:var(--soft)}
+.wk-holi{font-size:11px;color:var(--rust);background:var(--rust2);border-radius:6px;padding:1px 7px;margin-left:4px;white-space:nowrap;display:inline-block;margin-top:2px}
+.wk-tgt{font-family:"Times New Roman",serif;color:var(--soft);white-space:nowrap}
+.h-input{width:60px;font-family:"Times New Roman",serif;font-size:14px;text-align:center;border:1px solid var(--line);border-radius:8px;padding:6px 4px;background:var(--paper);color:var(--ink)}
+.h-input:focus{outline:none;border-color:var(--gold);background:#fff}
+.wk-note{width:100%;min-width:90px;font-family:inherit;font-size:12.5px;border:1px solid var(--line);border-radius:8px;padding:6px 8px;background:var(--paper);color:var(--ink)}
+.wk-note:focus{outline:none;border-color:var(--gold);background:#fff}
+.ck-check{appearance:none;-webkit-appearance:none;width:22px;height:22px;border:1.5px solid var(--line);border-radius:6px;cursor:pointer;background:var(--paper);position:relative;flex:0 0 22px}
+.ck-check:checked{background:var(--green);border-color:var(--green)}
+.ck-check:checked:after{content:"✓";color:#fff;position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:14px}
+.ck-meter{margin:15px 0 6px}
+.ck-meter .top{display:flex;justify-content:space-between;font-size:12.5px;color:var(--soft);margin-bottom:5px}
+.ck-meter .top b{font-family:"Times New Roman",serif;color:var(--ink);font-size:14px}
+.ck-meter .track{height:11px;border-radius:7px;background:var(--paper2);overflow:hidden}
+.ck-meter .fill{height:100%;border-radius:7px;background:var(--blue);transition:width .3s}
+details.ckm.s .ck-meter .fill{background:var(--green)} details.ckm.a .ck-meter .fill{background:var(--rust)} details.ckm.c .ck-meter .fill{background:var(--purple)}
+.ck-meter .fill.over{background:var(--green)!important}
+.ck-reflect{width:100%;font-family:inherit;font-size:13px;border:1px solid var(--line);border-radius:10px;padding:10px 12px;background:var(--paper);color:var(--ink);margin-top:12px;resize:vertical;min-height:46px}
+.ck-reflect:focus{outline:none;border-color:var(--gold);background:#fff}
+.ck-saved{position:fixed;left:50%;bottom:26px;transform:translateX(-50%) translateY(20px);background:var(--ink);color:#fff;font-size:13px;padding:9px 18px;border-radius:999px;opacity:0;pointer-events:none;transition:.25s;z-index:60;box-shadow:0 8px 24px rgba(0,0,0,.25)}
+.ck-saved.show{opacity:.94;transform:translateX(-50%) translateY(0)}
+.fab{position:fixed;right:18px;bottom:18px;display:flex;flex-direction:column;gap:10px;z-index:50}
+.fab a{width:46px;height:46px;border-radius:50%;background:var(--gold);color:#fff;display:flex;align-items:center;justify-content:center;text-decoration:none;font-size:18px;box-shadow:0 6px 18px rgba(60,45,20,.35);border:2px solid var(--paper);transition:.15s}
+.fab a:hover{transform:translateY(-2px)} .fab a.top{background:var(--blue)}
+@media(max-width:860px){
+  .ck-dash{grid-template-columns:repeat(2,1fr)}
+  table.ckwk thead{display:none}
+  table.ckwk,table.ckwk tbody,table.ckwk tr,table.ckwk td{display:block;width:100%}
+  table.ckwk tr{border:1px solid var(--line);border-radius:10px;margin-bottom:10px;padding:6px 4px}
+  table.ckwk td{border:none;padding:5px 10px}
+  .wk-cellh:before{content:"实际课时：";color:var(--soft);font-size:12px}
+  .wk-cellc:before{content:"达标：";color:var(--soft);font-size:12px;margin-right:8px}
+}
+@media print{
+  body{background:#fff}
+  .card,.section-note,table,.month{box-shadow:none}
+  .fab,.ck-tools{display:none}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="hero" id="top">
+  <div class="kicker">Final Work · Income · Cashflow Dashboard</div>
+  <h1>保底工作收入规划 · 最终统整版</h1>
+  <p class="sub">区间：2026年6月—2027年10月｜原则：在招生阻力最低的时间点承接需求，同时锁定保费与年度应急金。</p>
+  <div class="meta">
+    <span>对象：张峻诚</span>
+    <span>版本：2026-05-22 最终统整</span>
+    <span>覆盖：现金流 · 工作收入 · People · Promotion · 风险底线</span>
+    <span>核心底线：保费与应急金分桶，不重复使用</span>
+  </div>
+</header>
+
+<h2><span class="n">00</span>设计思路</h2>
+<p class="lead">本文件不是单纯排课表，而是把资产现金流、工作收入、招生低阻力节点、应急金底线统一到一张执行表里。</p>
+<div class="grid g2 logic">
+  <div class="card">
+    <h3>需求节点优先</h3>
+    <p>不按月份平均用力，而按“学生最急、家长最容易决策”的节点集中承接：暑假、春考、秋考、申请季、语言班、考研转留学。</p>
+  </div>
+  <div class="card">
+    <h3>现金流分桶</h3>
+    <p>永明保费、年度应急金、生活费、续投本金分别计算；同一笔钱不同时承担保费和应急功能。</p>
+  </div>
+  <div class="card">
+    <h3>Promotion × People 联动</h3>
+    <p>每个月不只写上课小时数，同时明确目标客户、需求触发点和公众号/小红书内容方向。</p>
+  </div>
+  <div class="card">
+    <h3>轻重有节奏</h3>
+    <p>高需求月提高工作强度，低需求月降低线下社交消耗；2026年6—9月额外承担应急金沉淀任务。</p>
+  </div>
+</div>
+
+<h2><span class="n">01</span>核心数字仪表盘</h2>
+<div class="grid g4">
+  <div class="card"><div class="big-num">20,500</div><div class="lab">固定刚性支出 / 月</div></div>
+  <div class="card"><div class="big-num">30,000</div><div class="lab">正常月度支出基准</div></div>
+  <div class="card"><div class="big-num">100,000–150,000</div><div class="lab">年度流动应急金底线</div></div>
+  <div class="card"><div class="big-num">7,500</div><div class="lab">线上每单利润</div></div>
+</div>
+<div class="grid g4" style="margin-top:14px">
+  <div class="card"><div class="big-num">600–700</div><div class="lab">线下课时费 / 小时</div></div>
+  <div class="card"><div class="big-num">380,882.89</div><div class="lab">2026永明相关资金池现值</div></div>
+  <div class="card"><div class="big-num">380,000–400,000</div><div class="lab">每年永明保费锁定额（含汇率缓冲）</div></div>
+  <div class="card"><div class="big-num">4,000,000</div><div class="lab">鹤延众+兴望赫未来续投本金基数</div></div>
+</div>
+
+<h2><span class="n">02</span>友邦校准数据与2026永明资金池</h2>
+<div class="grid g2">
+  <div>
+    <table>
+      <thead><tr><th>友邦项目</th><th class="num">当前金额</th></tr></thead>
+      <tbody>
+        <tr><td>现金红利当前可领取</td><td class="num">35,047.62 元</td></tr>
+        <tr><td>年金当前可领取</td><td class="num">32,229.77 元</td></tr>
+        <tr><td><b>当前可领取合计</b></td><td class="num"><b>67,277.39 元</b></td></tr>
+        <tr><td>现金价值</td><td class="num">755,899.94 元</td></tr>
+        <tr><td>处理方式</td><td class="num">现金红利、年金均存放于公司</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div>
+    <table>
+      <thead><tr><th>2026永明相关资金来源</th><th class="num">金额</th></tr></thead>
+      <tbody>
+        <tr><td>已储备永明专项资金</td><td class="num">170,000.00 元</td></tr>
+        <tr><td>友邦当前可领取合计</td><td class="num">67,277.39 元</td></tr>
+        <tr><td>兴望赫2026年6月收益</td><td class="num">68,810.96 元</td></tr>
+        <tr><td>鹤延众已到账收益</td><td class="num">74,794.54 元</td></tr>
+        <tr><td><b>合计</b></td><td class="num"><b>380,882.89 元</b></td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="section-note" style="margin-top:14px">
+  <b>关键校验：</b>若2026永明保费仅按34万元计算，缴费后缓冲约40,882.89元，不足10万元应急金底线。若按38—40万元锁定保费，则2026年6—9月需要额外沉淀约10万—12万元现金。<br>
+  <b style="color:var(--rust)">沉淀可行性：</b>2026年6—9月应按“标准档”执行并尽量留存结余。若7—8月线上能达到3单，或暑假线下接近标准上限，6—9月应急金可接近10万元；若线上低于2单或支出接近4万元，则需要用12月兴望赫派息6.92万元继续补入应急金桶。<b>结论：7—8月不能默认轻松档，必须用线上单数触发线下课时。</b>
+</div>
+
+<h2><span class="n">03</span>资金分桶与动作顺序</h2>
+<table>
+  <thead>
+    <tr><th>资金桶</th><th>金额 / 目标</th><th>资金来源</th><th>执行规则</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>永明2026保费桶</td>
+      <td class="num">380,000—400,000元</td>
+      <td>现有资金池 + 6—9月现金补足</td>
+      <td>2026-09-01前锁定；目标缴费窗口：2026-09-15—09-19。</td>
+    </tr>
+    <tr>
+      <td>2026应急金桶</td>
+      <td class="num">≥100,000元</td>
+      <td>2026年6—9月主动收入结余</td>
+      <td>永明缴费后仍保留，不参与保费、不参与消费。</td>
+    </tr>
+    <tr>
+      <td>永明2027保费桶</td>
+      <td class="num">380,000—400,000元</td>
+      <td>兴望赫2027年到期回款中切出</td>
+      <td>2027-09-01前锁定；目标缴费窗口：2027-09-15—09-19。</td>
+    </tr>
+    <tr>
+      <td>2027应急金桶</td>
+      <td class="num">100,000—150,000元</td>
+      <td>兴望赫2027年到期回款中切出</td>
+      <td>先切保费，再切应急金，剩余资金再进入续投判断。</td>
+    </tr>
+    <tr>
+      <td>续投本金桶</td>
+      <td class="num">剩余可投金额</td>
+      <td>鹤延众、兴望赫到期本金</td>
+      <td>不默认100%全额锁定；先满足保费和应急金。</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2><span class="n">04</span>关键资金动作日历</h2>
+<table>
+  <thead>
+    <tr><th>时间</th><th>事项</th><th class="num">金额</th><th>动作</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>2026-06-09</td><td>兴望赫第2次收益</td><td class="num">68,810.96元</td><td>进入2026永明相关资金池。</td></tr>
+    <tr><td>2026-06—09</td><td>应急金沉淀期</td><td class="num">目标10万—12万元</td><td>通过主动收入结余补足，9月缴费后仍保留。</td></tr>
+    <tr><td>2026-09-01</td><td>锁定2026永明保费</td><td class="num">38万—40万元</td><td>完成换汇/资金预留，不与应急金混用。</td></tr>
+    <tr><td>2026-09-15—09-19</td><td>缴纳2026永明保费</td><td class="num">约50,000美元</td><td>越晚越好，但不压官方最后一天，保留办理缓冲。</td></tr>
+    <tr><td>2026-10-30</td><td>鹤延众合同到期</td><td class="num">—</td><td>等待实际到账。</td></tr>
+    <tr><td>2026-11-06左右</td><td>鹤延众预计到账</td><td class="num">约2,075,205.50元</td><td>检查2026应急金余额；不足先补足，再决定续投金额。</td></tr>
+    <tr><td>2026-11-06—11-10</td><td>鹤延众续投/分桶窗口</td><td class="num">视应急金余额决定</td><td>不默认全额续投。</td></tr>
+    <tr><td>2026-12-09</td><td>兴望赫第3次收益</td><td class="num">69,189.04元</td><td>进入缓冲或2027保费预备。</td></tr>
+    <tr><td>2027-06-02</td><td>兴望赫合同到期</td><td class="num">—</td><td>等待实际到账。</td></tr>
+    <tr><td>2027-06-09左右</td><td>兴望赫预计到账</td><td class="num">约2,068,810.96元</td><td>先切2027永明保费38万—40万，再切10万—15万应急金。</td></tr>
+    <tr><td>2027-06-09—06-13</td><td>兴望赫续投/分桶窗口</td><td class="num">剩余部分</td><td>剩余资金再进入续投判断。</td></tr>
+    <tr><td>2027-09-01</td><td>锁定2027永明保费</td><td class="num">38万—40万元</td><td>提前完成资金锁定。</td></tr>
+    <tr><td>2027-09-15—09-19</td><td>缴纳2027永明保费</td><td class="num">约50,000美元</td><td>完成最后一笔永明缴费。</td></tr>
+  </tbody>
+</table>
+
+<h2><span class="n">05</span>People × Promotion 矩阵</h2>
+<table>
+  <thead>
+    <tr><th>目标客户</th><th>高需求窗口</th><th>需求触发点</th><th>公众号 / 小红书内容方向</th><th>转化属性</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>上海春考学生</td><td>10月—1月3日</td><td>春考英语一次拿到满意分数</td><td>春考英语冲刺、翻译/写作/听力最后提分</td><td>直接招生</td></tr>
+    <tr><td>上海秋考学生</td><td>4月—6月7日</td><td>秋考前最后提分窗口</td><td>秋考英语最后30天、作文翻译冲刺</td><td>直接招生</td></tr>
+    <tr><td>雅思/托福申请季学生</td><td>8月—1月</td><td>语言成绩递交、补交、申请截止</td><td>申请季语言时间线、雅思托福补救方案</td><td>直接招生 / 线索蓄水</td></tr>
+    <tr><td>英澳语言班学生</td><td>3月—6月</td><td>语言班申请、conditional offer语言要求</td><td>雅思差0.5/1分能否读语言班、语言班前补分</td><td>直接招生</td></tr>
+    <tr><td>考研失败转留学学生</td><td>2月底—3月</td><td>考研出分、复试不稳、不想二战</td><td>考研失败还能出国吗、3月开始雅思来得及吗</td><td>线上获客</td></tr>
+    <tr><td>上海中高考/选校家庭</td><td>5月—7月；9月—10月</td><td>中高考、选校、体制内外路线选择</td><td>上海初高中选校、IB/AP/A-Level怎么选</td><td>口碑沉淀 / 转介绍</td></tr>
+    <tr><td>高一高二提前规划学生</td><td>暑假、寒假、开学季</td><td>英语能力打底、未来高考/留学路线不确定</td><td>高一英语衔接、高二何时准备雅思托福</td><td>长期蓄水</td></tr>
+  </tbody>
+</table>
+
+<h2><span class="n">06</span>月度执行总表</h2>
+<p class="lead">线下小时数按招生阻力和现金目标综合设置。2026年6—9月额外承担应急金沉淀；2027年应急金由兴望赫到账后切出。</p>
+
+<div class="months">
+
+  <div class="month a">
+    <div class="mhead"><div class="mtitle">2026年6月</div><div class="badge">秋考/暑假前预热</div></div>
+    <div class="mgrid">
+      <div class="mbox"><div class="k">线上</div><div class="v">2—3单</div></div>
+      <div class="mbox"><div class="k">线下</div><div class="v">10—12h/周</div></div>
+      <div class="mbox"><div class="k">结余</div><div class="v">1.5—2万</div></div>
+      <div class="mbox"><div class="k">People</div><div class="v">秋考/暑假/选校</div></div>
+    </div>
+    <div class="bar"><i style="width:68%"></i></div>
+    <div class="mline"><b>Promotion：</b>秋考英语、暑假规划、中高考后路线、IB/AP/A-Level选校。<b class="warn">端午6/19—21</b>那一周线下减到3—4h。</div>
+    <div class="cash">6/9 兴望赫收益 68,810.96 元进入保费池。</div>
+  </div>
+
+  <div class="month s">
+    <div class="mhead"><div class="mtitle">2026年7月</div><div class="badge">暑假S级旺季｜应急金主力月</div></div>
+    <div class="mgrid">
+      <div class="mbox"><div class="k">线上</div><div class="v">2—3单</div></div>
+      <div class="mbox"><div class="k">线下标准</div><div class="v">16—17h/周</div></div>
+      <div class="mbox"><div class="k">结余</div><div class="v">约2.8—3.5万</div></div>
+      <div class="mbox"><div class="k">People</div><div class="v">暑假补习/雅思托福</div></div>
+    </div>
+    <div class="bar"><i style="width:100%"></i></div>
+    <div class="mline"><b>Promotion：</b>雅思暑期冲刺、初升高/高一衔接、上海高考英语能力打底。</div>
+    <div class="trigger-box"><b>触发档：</b>线上3单→14—15h/周；线上2单→<b>16—17h/周</b>；线上1单/应急金落后→<span class="warn">17—20h/周</span>，最多连续1—2周。</div>
+    <div class="cash">应急金主力沉淀月：7月不靠“轻松档”完成目标，默认按标准档排课。</div>
+  </div>
+
+  <div class="month s">
+    <div class="mhead"><div class="mtitle">2026年8月</div><div class="badge">暑假S级旺季｜应急金主力月</div></div>
+    <div class="mgrid">
+      <div class="mbox"><div class="k">线上</div><div class="v">2—3单</div></div>
+      <div class="mbox"><div class="k">线下标准</div><div class="v">15—16h/周</div></div>
+      <div class="mbox"><div class="k">结余</div><div class="v">约2.6—3.5万</div></div>
+      <div class="mbox"><div class="k">People</div><div class="v">暑假补习/申请季预热</div></div>
+    </div>
+    <div class="bar"><i style="width:96%"></i></div>
+    <div class="mline"><b>Promotion：</b>暑假雅思托福冲刺、申请季倒推时间表、高二何时准备语言考试。</div>
+    <div class="trigger-box"><b>触发档：</b>线上3单→13—15h/周；线上2单→<b>15—16h/周</b>；7月未达标/线上1单→<span class="warn">16—18h/周</span>短期补缺。</div>
+    <div class="cash">应急金主力沉淀月：8月底可略收，不把高强度拖到开学期。</div>
+  </div>
+
+  <div class="month b">
+    <div class="mhead"><div class="mtitle">2026年9月</div><div class="badge">申请季启动/缴费月</div></div>
+    <div class="mgrid">
+      <div class="mbox"><div class="k">线上</div><div class="v">2单</div></div>
+      <div class="mbox"><div class="k">线下</div><div class="v">8—10h/周</div></div>
+      <div class="mbox"><div class="k">结余</div><div class="v">0.5—1.5万</div></div>
+      <div class="mbox"><div class="k">People</div><div class="v">申请季/春考蓄水</div></div>
+    </div>
+    <div class="bar"><i style="width:60%"></i></div>
+    <div class="mline"><b>Promotion：</b>申请季语言成绩倒推、春考从9月怎么准备。<b class="warn">中秋9/25—27</b>那一周线下减到2—3h。</div>
+    <div class="mline" style="color:var(--rust)">注：保费由资金池支付，<b>不靠本月结余</b>；9月结余只用于补足应急金。</div>
+    <div class="cash out">9/1锁定保费；9/15—9/19缴纳2026永明保费（约5万美元）。缴费后应急金仍≥10万。</div>
+  </div>
+
+  <div class="month b">
+    <div class="mhead"><div class="mtitle">2026年10月</div><div class="badge">申请季/春考预热</div></div>
+    <div class="mgrid"><div class="mbox"><div class="k">线上</div><div class="v">2单</div></div><div class="mbox"><div class="k">线下</div><div class="v">7—9h/周</div></div><div class="mbox"><div class="k">结余</div><div class="v">0—1万</div></div><div class="mbox"><div class="k">People</div><div class="v">申请季/春考</div></div></div>
+    <div class="bar"><i style="width:50%"></i></div>
+    <div class="mline"><b>Promotion：</b>申请季语言补救、春考预热、国际路线口碑文。<b class="warn">国庆10/1—7</b>首周线下趋近0，主推线上内容。</div>
+    <div class="cash">10/30鹤延众合同到期；等待11月实际到账。</div>
+  </div>
+
+  <div class="month a">
+    <div class="mhead"><div class="mtitle">2026年11月</div><div class="badge">春考冲刺启动</div></div>
+    <div class="mgrid"><div class="mbox"><div class="k">线上</div><div class="v">2单</div></div><div class="mbox"><div class="k">线下</div><div class="v">8—11h/周</div></div><div class="mbox"><div class="k">结余</div><div class="v">0—1万</div></div><div class="mbox"><div class="k">People</div><div class="v">春考/申请季</div></div></div>
+    <div class="bar"><i style="width:64%"></i></div>
+    <div class="mline"><b>Promotion：</b>春考最后两个月、雅思托福申请前补救。</div>
+    <div class="cash">11/06左右鹤延众到账；11/06—11/10先校验应急金，再续投。</div>
+  </div>
+
+  <div class="month s">
+    <div class="mhead"><div class="mtitle">2026年12月</div><div class="badge">春考最高峰</div></div>
+    <div class="mgrid"><div class="mbox"><div class="k">线上</div><div class="v">2—3单</div></div><div class="mbox"><div class="k">线下</div><div class="v">11—14h/周</div></div><div class="mbox"><div class="k">结余</div><div class="v">约2—2.5万</div></div><div class="mbox"><div class="k">People</div><div class="v">春考/语言成绩补救</div></div></div>
+    <div class="bar"><i style="width:82%"></i></div>
+    <div class="mline"><b>Promotion：</b>春考最后30天、作文翻译冲刺、12月语言成绩补救。</div>
+    <div class="cash">12/9 兴望赫收益 69,189.04 元。</div>
+  </div>
+
+  <div class="month a">
+    <div class="mhead"><div class="mtitle">2027年1月</div><div class="badge">春考+寒假</div></div>
+    <div class="mgrid"><div class="mbox"><div class="k">线上</div><div class="v">2—3单</div></div><div class="mbox"><div class="k">线下</div><div class="v">8—12h/周</div></div><div class="mbox"><div class="k">结余</div><div class="v">0—1.5万</div></div><div class="mbox"><div class="k">People</div><div class="v">春考后/寒假/申请</div></div></div>
+    <div class="bar"><i style="width:70%"></i></div>
+    <div class="mline"><b>Promotion：</b>春考后是否准备秋考、寒假英语补弱、雅思寒假冲刺。</div>
+  </div>
+
+  <div class="month c">
+    <div class="mhead"><div class="mtitle">2027年2月</div><div class="badge">春节切割+考研出分</div></div>
+    <div class="mgrid"><div class="mbox"><div class="k">线上</div><div class="v">1—2单</div></div><div class="mbox"><div class="k">线下</div><div class="v">6—10h/周</div></div><div class="mbox"><div class="k">结余</div><div class="v">可为0</div></div><div class="mbox"><div class="k">People</div><div class="v">寒假/考研转留学</div></div></div>
+    <div class="bar"><i style="width:50%"></i></div>
+    <div class="mline"><b>Promotion：</b>考研失败还能出国吗、3月开始雅思来得及吗；<b class="warn">春节初一2/6</b>前后约两周线下基本停摆，整月当休整月。</div>
+  </div>
+
+  <div class="month b">
+    <div class="mhead"><div class="mtitle">2027年3月</div><div class="badge">考研转留学窗口</div></div>
+    <div class="mgrid"><div class="mbox"><div class="k">线上</div><div class="v">2单</div></div><div class="mbox"><div class="k">线下</div><div class="v">7—10h/周</div></div><div class="mbox"><div class="k">结余</div><div class="v">0—1万</div></div><div class="mbox"><div class="k">People</div><div class="v">考研转留学/春季常规</div></div></div>
+    <div class="bar"><i style="width:56%"></i></div>
+    <div class="mline"><b>Promotion：</b>考研后留学语言路径、英国澳洲港新申请补救。</div>
+  </div>
+
+  <div class="month b">
+    <div class="mhead"><div class="mtitle">2027年4月</div><div class="badge">秋考+语言班预热</div></div>
+    <div class="mgrid"><div class="mbox"><div class="k">线上</div><div class="v">2单</div></div><div class="mbox"><div class="k">线下</div><div class="v">7—9h/周</div></div><div class="mbox"><div class="k">结余</div><div class="v">0—1万</div></div><div class="mbox"><div class="k">People</div><div class="v">秋考/语言班</div></div></div>
+    <div class="bar"><i style="width:50%"></i></div>
+    <div class="mline"><b>Promotion：</b>秋考英语预热、雅思差0.5能否读语言班。<b class="warn">清明4/3—5</b>那一周线下减到3—4h。</div>
+  </div>
+
+  <div class="month a">
+    <div class="mhead"><div class="mtitle">2027年5月</div><div class="badge">秋考冲刺+语言班</div></div>
+    <div class="mgrid"><div class="mbox"><div class="k">线上</div><div class="v">2—3单</div></div><div class="mbox"><div class="k">线下</div><div class="v">9—12h/周</div></div><div class="mbox"><div class="k">结余</div><div class="v">1—2万</div></div><div class="mbox"><div class="k">People</div><div class="v">秋考/语言班</div></div></div>
+    <div class="bar"><i style="width:74%"></i></div>
+    <div class="mline"><b>Promotion：</b>秋考最后一个月、语言班前雅思补分、conditional offer语言要求。<b class="warn">劳动节5/1—5</b>首周线下趋近0，后三周补回。</div>
+  </div>
+
+  <div class="month a">
+    <div class="mhead"><div class="mtitle">2027年6月</div><div class="badge">秋考上旬+资金分桶</div></div>
+    <div class="mgrid"><div class="mbox"><div class="k">线上</div><div class="v">2单</div></div><div class="mbox"><div class="k">线下</div><div class="v">8—11h/周</div></div><div class="mbox"><div class="k">结余</div><div class="v">0—1万</div></div><div class="mbox"><div class="k">People</div><div class="v">秋考/暑假预热</div></div></div>
+    <div class="bar"><i style="width:64%"></i></div>
+    <div class="mline"><b>Promotion：</b>秋考收尾、暑假规划、中高考后路线内容。<b class="warn">端午6/9</b>当周线下减到3—4h。</div>
+    <div class="cash">6/9左右兴望赫到账约206.9万；6/09—6/13先切2027保费(38—40万)与应急金(10—15万)，再判断续投。</div>
+  </div>
+
+  <div class="month s">
+    <div class="mhead"><div class="mtitle">2027年7月</div><div class="badge">暑假S级旺季</div></div>
+    <div class="mgrid"><div class="mbox"><div class="k">线上</div><div class="v">2—3单</div></div><div class="mbox"><div class="k">线下</div><div class="v">12—15h/周</div></div><div class="mbox"><div class="k">结余</div><div class="v">1—3万</div></div><div class="mbox"><div class="k">People</div><div class="v">暑假补习/雅思托福</div></div></div>
+    <div class="bar"><i style="width:90%"></i></div>
+    <div class="mline"><b>Promotion：</b>暑假冲刺、高一衔接、新申请季语言准备。</div>
+  </div>
+
+  <div class="month s">
+    <div class="mhead"><div class="mtitle">2027年8月</div><div class="badge">暑假S级旺季</div></div>
+    <div class="mgrid"><div class="mbox"><div class="k">线上</div><div class="v">2—3单</div></div><div class="mbox"><div class="k">线下</div><div class="v">12—15h/周</div></div><div class="mbox"><div class="k">结余</div><div class="v">1—3万</div></div><div class="mbox"><div class="k">People</div><div class="v">暑假/申请季预热</div></div></div>
+    <div class="bar"><i style="width:90%"></i></div>
+    <div class="mline"><b>Promotion：</b>雅思托福暑假收尾、9月申请季倒推、IB/AP/A-Level路线。</div>
+  </div>
+
+  <div class="month b">
+    <div class="mhead"><div class="mtitle">2027年9月</div><div class="badge">申请季启动/缴费月</div></div>
+    <div class="mgrid"><div class="mbox"><div class="k">线上</div><div class="v">2单</div></div><div class="mbox"><div class="k">线下</div><div class="v">6—8h/周</div></div><div class="mbox"><div class="k">结余</div><div class="v">0—1万</div></div><div class="mbox"><div class="k">People</div><div class="v">申请季</div></div></div>
+    <div class="bar"><i style="width:46%"></i></div>
+    <div class="mline"><b>Promotion：</b>新申请季语言成绩倒推、10月雅思还没出分怎么办。<b class="warn">中秋9/15</b>当周线下减到3—4h。</div>
+    <div class="mline" style="color:var(--rust)">注：本月保费来源已在6月兴望赫到账时切出锁定，<b>不靠本月收入</b>。缴完即永明5/5完成。</div>
+    <div class="cash out">9/1锁定保费；9/15—9/19缴纳2027永明保费（约5万美元）。</div>
+  </div>
+
+  <div class="month b">
+    <div class="mhead"><div class="mtitle">2027年10月</div><div class="badge">申请季+国庆切割</div></div>
+    <div class="mgrid"><div class="mbox"><div class="k">线上</div><div class="v">2单</div></div><div class="mbox"><div class="k">线下</div><div class="v">6—8h/周</div></div><div class="mbox"><div class="k">结余</div><div class="v">0—1万</div></div><div class="mbox"><div class="k">People</div><div class="v">申请季/路线选择</div></div></div>
+    <div class="bar"><i style="width:46%"></i></div>
+    <div class="mline"><b>Promotion：</b>申请季语言补救、上海国际课程路线、国庆周降低线下强度。</div>
+  </div>
+
+</div>
+
+<h2><span class="n">07</span>弹性调节规则</h2>
+<table>
+  <thead><tr><th>触发情况</th><th>调整方式</th><th>目的</th></tr></thead>
+  <tbody>
+    <tr><td>线上当月3单及以上</td><td>线下可下降2—4小时/周；暑假可维持下限。</td><td>降低社交消耗。</td></tr>
+    <tr><td>线上当月只有2单</td><td>按月度表中值执行；2026年7—8月线下靠近16—18小时/周。</td><td>完成生活费与应急金沉淀。</td></tr>
+    <tr><td>线上当月只有1单</td><td>线下临时上调至表格上限；必要时使用已有缓冲，不把课时无限上推。</td><td>防止单月现金流缺口。</td></tr>
+    <tr><td>当月支出接近4万元</td><td>从当月结余目标或缓冲中覆盖；不动保费锁定资金。</td><td>避免保费桶被侵蚀。</td></tr>
+    <tr><td>到账延迟</td><td>未到账资金不用于刚性安排；只使用已到账现金支付保费和应急支出。</td><td>防止时间差风险。</td></tr>
+    <tr><td>美元汇率上行</td><td>永明保费按38万—40万元锁定，而不是只按34万元测算。</td><td>防止汇率风险。</td></tr>
+  </tbody>
+</table>
+
+<h2><span class="n">08</span>风险底线清单</h2>
+<table>
+  <thead><tr><th>风险点</th><th>最终底线</th></tr></thead>
+  <tbody>
+    <tr><td>应急金不足</td><td>任何时候可动用现金不低于10万元；稳妥区间10万—15万元。</td></tr>
+    <tr><td>保费与应急金混用</td><td>永明保费桶与年度应急金桶分开记账，不重复使用。</td></tr>
+    <tr><td>续投过满</td><td>鹤延众、兴望赫到账后，不默认全额续投；先切保费与应急金。</td></tr>
+    <tr><td>收入波动</td><td>用线上单数决定线下小时数；线上少时线下临时补位，线上多时降低线下。</td></tr>
+    <tr><td>需求判断过粗</td><td>按“招生低阻力节点”执行：春考、秋考、申请季、语言班、考研出分、暑假。</td></tr>
+    <tr><td>身体与情绪消耗</td><td>线下课时不做全年平均拉满；高需求月提高，低需求月降低。</td></tr>
+  </tbody>
+</table>
+
+<h2><span class="n">09</span>最终执行底线</h2>
+<div class="section-note">
+  <b>最终规则：</b>主动收入负责生活费与2026年6—9月应急金补足；永明保费由资金池和到期资产覆盖；鹤延众、兴望赫到账后按“先锁保费 → 再锁应急金 → 剩余续投”顺序处理；招生与内容投放按需求最强节点执行。
+</div>
+
+<h2 id="checkin"><span class="n">10</span>周度打卡系统</h2>
+<p class="lead">每周安排工作时来这里记录：填实际线下课时、点一下达标、记本月线上成交，系统自动算出本月预估收入并对照月度目标。月度目标按 06 表的结余区间反推（生活费30000 + 该月目标结余）。数据保存在本机浏览器，不上传任何地方。</p>
+<div class="section-note" style="margin-bottom:16px">
+  <b>2026年暑假课时触发规则：</b>7月默认按<b>16—17h/周</b>排课；8月默认按<b>15—16h/周</b>排课。若当月线上达到3单，可降到舒适档；若只有1单或应急金沉淀落后，才短期进入补缺档。
+  <br><b>执行边界：</b>17—20h/周只作为1—2周短期压力上限，不作为整月常态。
+</div>
+<div class="ck-dash" id="ckDash"></div>
+<div class="ck-tools">
+  <button class="ck-btn primary" id="ckJump">跳到本月 →</button>
+  <button class="ck-btn" id="ckExpand">展开全部</button>
+  <button class="ck-btn" id="ckCollapse">收起全部</button>
+  <button class="ck-btn" id="ckFill">本月按标准值一键填</button>
+  <button class="ck-btn" id="ckExport">导出记录</button>
+  <button class="ck-btn" id="ckReset">清空重置</button>
+  <span class="ck-hint">换算：线下¥650/时 · 线上¥7,500/单</span>
+</div>
+<div id="ckMonths"></div>
+
+<div class="footer">
+  本文件为个人工作收入与现金流执行表，基于已提供的保单数据、资产回款节点、收入结构、支出结构及本人工作偏好整理。节假日与考试政策如遇官方调整，以实际公布为准；保险缴费与产品续投以官方通知和实际到账为准。
+</div>
+
+</div>
+
+<div class="fab">
+  <a href="#checkin" title="去打卡">📌</a>
+  <a href="#top" class="top" title="回到顶部">↑</a>
+</div>
+<div class="ck-saved" id="ckToast">已保存</div>
+
+<script>
+(function(){
+  "use strict";
+  var RATE_OFF=650, RATE_ON=7500, LIFE=30000, WK=4.3;
+  var KEY="zjc_final_checkin_v2";
+
+  // season: b常规/s旺季/a过渡或冲刺/c休整 ; goal=月度收入目标(生活费+目标结余中值) ; floor=线上保底单数
+  // weeks[].t=该周线下保底课时(节假日已下调) ; holi=节假日
+  var PLAN=[
+   {id:"2026-06",label:"2026年6月",cls:"a",badge:"秋考/暑假前预热",goal:48000,floor:2,
+    weeks:[{n:"第1周",d:"6/1–6/7",t:11},{n:"第2周",d:"6/8–6/14",t:11},{n:"第3周",d:"6/15–6/21",t:4,holi:"端午6/19–21"},{n:"第4周",d:"6/22–6/30",t:11}],
+    cash:"6/9 兴望赫收益 68,810.96 进保费池"},
+   {id:"2026-07",label:"2026年7月",cls:"s",badge:"暑假S级旺季",goal:63000,floor:2,
+    weeks:[{n:"第1周",d:"7/1–7/7",t:16},{n:"第2周",d:"7/8–7/14",t:17},{n:"第3周",d:"7/15–7/21",t:16},{n:"第4周",d:"7/22–7/31",t:16}],
+    cash:"应急金主力沉淀月｜触发：3单可降14–15h/周；2单按16–17h/周；1单短期17–20h/周"},
+   {id:"2026-08",label:"2026年8月",cls:"s",badge:"暑假S级旺季",goal:63000,floor:2,
+    weeks:[{n:"第1周",d:"8/1–8/7",t:16},{n:"第2周",d:"8/8–8/14",t:17},{n:"第3周",d:"8/15–8/21",t:16},{n:"第4周",d:"8/22–8/31",t:14}],
+    cash:"应急金主力沉淀月｜触发：3单可降13–15h/周；2单按15–16h/周；未达标短期16–18h/周"},
+   {id:"2026-09",label:"2026年9月",cls:"b",badge:"申请季启动/缴费月",goal:42000,floor:2,
+    weeks:[{n:"第1周",d:"9/1–9/7",t:10},{n:"第2周",d:"9/8–9/14",t:10},{n:"第3周",d:"9/15–9/21",t:10},{n:"第4周",d:"9/22–9/30",t:3,holi:"中秋9/25–27"}],
+    cash:"9/15–19缴2026永明保费(资金池支付,不靠本月结余)",out:true},
+   {id:"2026-10",label:"2026年10月",cls:"b",badge:"申请季/春考预热",goal:37000,floor:2,
+    weeks:[{n:"第1周",d:"10/1–10/7",t:0,holi:"国庆10/1–7"},{n:"第2周",d:"10/8–10/14",t:9},{n:"第3周",d:"10/15–10/21",t:9},{n:"第4周",d:"10/22–10/31",t:9}],
+    cash:"10/30鹤延众到期,等待11月到账"},
+   {id:"2026-11",label:"2026年11月",cls:"b",badge:"春考冲刺启动",goal:41000,floor:2,
+    weeks:[{n:"第1周",d:"11/1–11/7",t:10},{n:"第2周",d:"11/8–11/14",t:10},{n:"第3周",d:"11/15–11/21",t:10},{n:"第4周",d:"11/22–11/30",t:10}],
+    cash:"11/6左右鹤延众到账≈207.5万;先校验应急金再续投"},
+   {id:"2026-12",label:"2026年12月",cls:"s",badge:"春考最高峰",goal:53000,floor:2,
+    weeks:[{n:"第1周",d:"12/1–12/7",t:12},{n:"第2周",d:"12/8–12/14",t:13},{n:"第3周",d:"12/15–12/21",t:13},{n:"第4周",d:"12/22–12/31",t:12}],
+    cash:"12/9 兴望赫收益 69,189.04(并入应急金桶)"},
+   {id:"2027-01",label:"2027年1月",cls:"a",badge:"春考+寒假",goal:46000,floor:2,
+    weeks:[{n:"第1周",d:"1/1–1/7",t:8,holi:"元旦1/1–3"},{n:"第2周",d:"1/8–1/14",t:11},{n:"第3周",d:"1/15–1/21",t:11},{n:"第4周",d:"1/22–1/31",t:10}]},
+   {id:"2027-02",label:"2027年2月",cls:"c",badge:"春节切割+考研出分",goal:33000,floor:1,
+    weeks:[{n:"第1周",d:"2/1–2/7",t:0,holi:"春节初一2/6"},{n:"第2周",d:"2/8–2/14",t:0,holi:"春节延续"},{n:"第3周",d:"2/15–2/21",t:8},{n:"第4周",d:"2/22–2/28",t:9}]},
+   {id:"2027-03",label:"2027年3月",cls:"b",badge:"考研转留学窗口",goal:38000,floor:2,
+    weeks:[{n:"第1周",d:"3/1–3/7",t:9},{n:"第2周",d:"3/8–3/14",t:9},{n:"第3周",d:"3/15–3/21",t:9},{n:"第4周",d:"3/22–3/31",t:8}]},
+   {id:"2027-04",label:"2027年4月",cls:"b",badge:"秋考+语言班预热",goal:37000,floor:2,
+    weeks:[{n:"第1周",d:"4/1–4/7",t:3,holi:"清明4/3–5"},{n:"第2周",d:"4/8–4/14",t:9},{n:"第3周",d:"4/15–4/21",t:9},{n:"第4周",d:"4/22–4/30",t:9}]},
+   {id:"2027-05",label:"2027年5月",cls:"a",badge:"秋考冲刺+语言班",goal:48000,floor:2,
+    weeks:[{n:"第1周",d:"5/1–5/7",t:0,holi:"劳动节5/1–5"},{n:"第2周",d:"5/8–5/14",t:11},{n:"第3周",d:"5/15–5/21",t:11},{n:"第4周",d:"5/22–5/31",t:11}]},
+   {id:"2027-06",label:"2027年6月",cls:"a",badge:"秋考上旬+资金分桶",goal:41000,floor:2,
+    weeks:[{n:"第1周",d:"6/1–6/7",t:10},{n:"第2周",d:"6/8–6/14",t:4,holi:"端午6/9"},{n:"第3周",d:"6/15–6/21",t:10},{n:"第4周",d:"6/22–6/30",t:10}],
+    cash:"6/9左右兴望赫到账≈206.9万;先切保费38–40万+应急金10–15万"},
+   {id:"2027-07",label:"2027年7月",cls:"s",badge:"暑假S级旺季",goal:56000,floor:2,
+    weeks:[{n:"第1周",d:"7/1–7/7",t:13},{n:"第2周",d:"7/8–7/14",t:14},{n:"第3周",d:"7/15–7/21",t:13},{n:"第4周",d:"7/22–7/31",t:13}]},
+   {id:"2027-08",label:"2027年8月",cls:"s",badge:"暑假S级旺季",goal:56000,floor:2,
+    weeks:[{n:"第1周",d:"8/1–8/7",t:13},{n:"第2周",d:"8/8–8/14",t:14},{n:"第3周",d:"8/15–8/21",t:13},{n:"第4周",d:"8/22–8/31",t:11}]},
+   {id:"2027-09",label:"2027年9月",cls:"b",badge:"申请季启动/缴费月",goal:35000,floor:2,
+    weeks:[{n:"第1周",d:"9/1–9/7",t:7},{n:"第2周",d:"9/8–9/14",t:7},{n:"第3周",d:"9/15–9/21",t:3,holi:"中秋9/15"},{n:"第4周",d:"9/22–9/30",t:7}],
+    cash:"9/15–19缴2027永明保费(来源6月已锁定);缴完永明5/5完成",out:true},
+   {id:"2027-10",label:"2027年10月",cls:"b",badge:"申请季+国庆切割",goal:35000,floor:2,
+    weeks:[{n:"第1周",d:"10/1–10/7",t:0,holi:"国庆10/1–7"},{n:"第2周",d:"10/8–10/14",t:7},{n:"第3周",d:"10/15–10/21",t:7},{n:"第4周",d:"10/22–10/31",t:7}]}
+  ];
+
+  var state={};
+  try{state=JSON.parse(localStorage.getItem(KEY))||{};}catch(e){state={};}
+  function save(){try{localStorage.setItem(KEY,JSON.stringify(state));toast("已保存");}catch(e){toast("无法保存(隐私模式?)");}}
+  function mS(id){if(!state[id])state[id]={deals:null,note:"",weeks:{}};return state[id];}
+  function wS(id,i){var m=mS(id);if(!m.weeks[i])m.weeks[i]={h:"",done:false,note:""};return m.weeks[i];}
+
+  var toastEl=document.getElementById("ckToast"),toastT;
+  function toast(m){toastEl.textContent=m;toastEl.classList.add("show");clearTimeout(toastT);toastT=setTimeout(function(){toastEl.classList.remove("show");},1200);}
+
+  function curId(){
+    var n=new Date(),id=n.getFullYear()+"-"+(("0"+(n.getMonth()+1)).slice(-2));
+    for(var i=0;i<PLAN.length;i++)if(PLAN[i].id===id)return id;
+    return id<PLAN[0].id?PLAN[0].id:PLAN[PLAN.length-1].id;
+  }
+  var CUR=curId();
+
+  function mDeals(M){var s=mS(M.id);return s.deals==null?M.floor:s.deals;}
+  function mIncome(M,useDefault){var s=mS(M.id),d=(useDefault===false?(s.deals==null?0:s.deals):mDeals(M)),h=0;M.weeks.forEach(function(w,i){var v=parseFloat((s.weeks[i]||{}).h);if(!isNaN(v))h+=v;});return d*RATE_ON+h*RATE_OFF;}
+  function markTouched(id){mS(id).touched=true;}
+  function esc(v){return String(v||"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");}
+
+  function renderMonth(M){
+    var s=mS(M.id);
+    var det=document.createElement("details");det.className="ckm "+M.cls;det.id="ck-"+M.id;if(M.id===CUR)det.open=true;
+    var floorH=M.weeks.reduce(function(a,w){return a+w.t;},0);
+    var sum=document.createElement("summary");
+    var cash=M.cash?'<span class="mcash'+(M.out?" out":"")+'">'+(M.out?"↗ ":"↘ ")+M.cash+'</span>':'';
+    sum.innerHTML='<span class="mlabel">'+M.label+'</span><span class="mbadge">'+M.badge+'</span>'+
+      '<span class="mfloor">保底 线上<b> '+M.floor+'</b>单 · 线下<b> '+floorH+'h</b>/月 · 目标<b> ¥'+M.goal.toLocaleString()+'</b></span>'+cash+'<span class="mprog" data-prog></span>';
+    det.appendChild(sum);
+
+    var body=document.createElement("div");body.className="ckbody";
+    var deals=mDeals(M);
+    var on=document.createElement("div");on.className="ck-online";
+    on.innerHTML='<span class="t">线上成交 <small>(保底'+M.floor+'单)</small></span>'+
+      '<span class="stepper"><button data-dec>−</button><span class="cnt" data-cnt>'+deals+'</span><button data-plus>+</button></span>'+
+      '<span class="earn">线上进账 <b data-onearn>¥'+(deals*RATE_ON).toLocaleString()+'</b></span>';
+    body.appendChild(on);
+
+    var tbl=document.createElement("table");tbl.className="ckwk";
+    tbl.innerHTML='<thead><tr><th>周次</th><th>保底课时</th><th>实际课时(h)</th><th>达标</th><th>备注</th></tr></thead>';
+    var tb=document.createElement("tbody");
+    M.weeks.forEach(function(w,i){
+      var ws=wS(M.id,i);var tr=document.createElement("tr");if(ws.done)tr.className="done";
+      tr.innerHTML='<td><span class="wk-name">'+w.n+'</span><br><span class="wk-date">'+w.d+'</span>'+(w.holi?'<br><span class="wk-holi">'+w.holi+'</span>':'')+'</td>'+
+        '<td class="wk-tgt">'+w.t+' h</td>'+
+        '<td class="wk-cellh"><input class="h-input" type="number" min="0" step="0.5" placeholder="'+w.t+'" value="'+(ws.h===""?"":ws.h)+'" data-h="'+i+'"></td>'+
+        '<td class="wk-cellc"><input class="ck-check" type="checkbox" '+(ws.done?"checked":"")+' data-done="'+i+'"></td>'+
+        '<td><input class="wk-note" type="text" placeholder="上课对象/调整原因" value="'+esc(ws.note)+'" data-note="'+i+'"></td>';
+      tb.appendChild(tr);
+    });
+    tbl.appendChild(tb);body.appendChild(tbl);
+
+    var meter=document.createElement("div");meter.className="ck-meter";
+    meter.innerHTML='<div class="top"><span>本月预估收入 <b data-income></b> / 目标 ¥'+M.goal.toLocaleString()+'</span><span data-pct></span></div><div class="track"><div class="fill" data-fill></div></div>';
+    body.appendChild(meter);
+
+    var ref=document.createElement("textarea");ref.className="ck-reflect";ref.placeholder="本月复盘：哪类生源好成交？线下累不累？下月微调…";ref.value=s.note||"";
+    body.appendChild(ref);
+    det.appendChild(body);
+
+    function refresh(){
+      var inc=mIncome(M),pct=Math.round(inc/M.goal*100);
+      body.querySelector("[data-income]").textContent="¥"+inc.toLocaleString();
+      var f=body.querySelector("[data-fill]");f.style.width=Math.min(pct,100)+"%";f.classList.toggle("over",pct>=100);
+      body.querySelector("[data-pct]").textContent=pct+"%";
+      body.querySelector("[data-onearn]").textContent="¥"+(mDeals(M)*RATE_ON).toLocaleString();
+      var dn=0;M.weeks.forEach(function(w,i){if((s.weeks[i]||{}).done)dn++;});
+      sum.querySelector("[data-prog]").innerHTML='达标 <b>'+dn+'/'+M.weeks.length+'</b>周';
+      refreshDash();
+    }
+    on.querySelector("[data-dec]").addEventListener("click",function(){var v=Math.max(0,mDeals(M)-1);mS(M.id).deals=v;markTouched(M.id);on.querySelector("[data-cnt]").textContent=v;refresh();save();});
+    on.querySelector("[data-plus]").addEventListener("click",function(){var v=mDeals(M)+1;mS(M.id).deals=v;markTouched(M.id);on.querySelector("[data-cnt]").textContent=v;refresh();save();});
+    tb.querySelectorAll("[data-h]").forEach(function(inp){
+      inp.addEventListener("input",function(){var i=+inp.getAttribute("data-h");wS(M.id,i).h=inp.value===""?"":parseFloat(inp.value);markTouched(M.id);refresh();});
+      inp.addEventListener("change",save);
+    });
+    tb.querySelectorAll("[data-done]").forEach(function(c){
+      c.addEventListener("change",function(){var i=+c.getAttribute("data-done");wS(M.id,i).done=c.checked;markTouched(M.id);c.closest("tr").classList.toggle("done",c.checked);refresh();save();});
+    });
+    tb.querySelectorAll("[data-note]").forEach(function(inp){
+      inp.addEventListener("input",function(){var i=+inp.getAttribute("data-note");wS(M.id,i).note=inp.value;markTouched(M.id);});
+      inp.addEventListener("change",save);
+    });
+    ref.addEventListener("input",function(){mS(M.id).note=ref.value;markTouched(M.id);});ref.addEventListener("change",save);
+    det._refresh=refresh;det._M=M;
+    return det;
+  }
+
+  function refreshDash(){
+    var filled=0,doneW=0,totalW=0,inc=0;
+    PLAN.forEach(function(M){var s=mS(M.id),act=!!s.touched;
+      M.weeks.forEach(function(w,i){totalW++;var ws=s.weeks[i]||{};if(ws.h!==""&&ws.h!=null){filled++;act=true;}if(ws.done){doneW++;act=true;}});
+      if(act)inc+=mIncome(M,true);
+    });
+    var rate=filled?Math.round(doneW/filled*100):0;
+    var lab=(PLAN.filter(function(M){return M.id===CUR;})[0]||{}).label||"—";
+    document.getElementById("ckDash").innerHTML=
+      '<div class="d"><div class="num">'+filled+'<small>/'+totalW+'</small></div><div class="lab">已记录周</div></div>'+
+      '<div class="d hl"><div class="num">'+doneW+'</div><div class="lab">达标周</div></div>'+
+      '<div class="d"><div class="num">'+rate+'<small>%</small></div><div class="lab">达标率</div></div>'+
+      '<div class="d"><div class="num" style="font-size:21px">¥'+(Math.round(inc/1000)/10)+'<small>万</small></div><div class="lab">累计预估收入</div></div>'+
+      '<div class="d"><div class="num" style="font-size:15px">'+lab+'</div><div class="lab">当前月份</div></div>';
+  }
+
+  var holder=document.getElementById("ckMonths");
+  PLAN.forEach(function(M){holder.appendChild(renderMonth(M));});
+  Array.prototype.forEach.call(holder.querySelectorAll("details.ckm"),function(d){if(d._refresh)d._refresh();});
+  refreshDash();
+
+  document.getElementById("ckJump").addEventListener("click",function(){var el=document.getElementById("ck-"+CUR);if(el){el.open=true;el.scrollIntoView({behavior:"smooth",block:"start"});}});
+  document.getElementById("ckExpand").addEventListener("click",function(){Array.prototype.forEach.call(holder.querySelectorAll("details.ckm"),function(d){d.open=true;});});
+  document.getElementById("ckCollapse").addEventListener("click",function(){Array.prototype.forEach.call(holder.querySelectorAll("details.ckm"),function(d){d.open=false;});});
+  document.getElementById("ckFill").addEventListener("click",function(){
+    var el=document.querySelector("details.ckm[open]")||document.getElementById("ck-"+CUR);
+    if(!el){toast("先展开一个月份");return;}
+    var M=el._M;M.weeks.forEach(function(w,i){wS(M.id,i).h=w.t;wS(M.id,i).done=true;});mS(M.id).deals=M.floor;
+    save();el.replaceWith(renderMonth(M));var nu=document.getElementById("ck-"+M.id);nu.open=true;nu._refresh();
+    toast(M.label+" 已按标准值填好");
+  });
+  document.getElementById("ckExport").addEventListener("click",function(){
+    var b=new Blob([JSON.stringify(state,null,2)],{type:"application/json"});var a=document.createElement("a");
+    a.href=URL.createObjectURL(b);a.download="工作打卡记录_"+new Date().toISOString().slice(0,10)+".json";a.click();
+    setTimeout(function(){URL.revokeObjectURL(a.href);},500);toast("已导出JSON");
+  });
+  document.getElementById("ckReset").addEventListener("click",function(){if(confirm("确定清空所有打卡记录？不可撤销。")){state={};localStorage.removeItem(KEY);location.reload();}});
+})();
+</script>
+</body>
+</html>
