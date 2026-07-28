@@ -208,10 +208,35 @@ header{position:sticky;top:0;z-index:40;padding-top:16px;}
   color:#3a2c00;font-weight:600;font-family:var(--sans);font-size:14.5px;}
 .answer .conn{color:var(--red);font-weight:700;font-style:normal;}
 .answer strong{font-weight:700;color:#1f2c25;}
+/* sentence-by-sentence read-aloud player */
+.speech-player{font-family:var(--sans);margin-top:14px;padding:12px;
+  background:linear-gradient(145deg,rgba(232,244,237,.82),rgba(241,247,244,.68));
+  border:1px solid rgba(31,84,53,.14);border-radius:12px;}
+.speech-top{display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
+.speech-btn{font-family:var(--sans);font-size:12px;font-weight:750;line-height:1;
+  color:var(--green);background:rgba(255,255,255,.76);border:1px solid rgba(31,84,53,.18);
+  border-radius:9px;padding:9px 11px;cursor:pointer;transition:.18s;white-space:nowrap;}
+.speech-btn:hover:not(:disabled){background:#fff;transform:translateY(-1px);box-shadow:0 5px 12px -8px rgba(31,84,53,.55);}
+.speech-btn.primary{color:#fff;background:var(--green);border-color:var(--green);}
+.speech-btn.pause{color:#3a2c00;background:rgba(242,183,5,.28);border-color:rgba(217,154,2,.35);}
+.speech-btn:disabled{opacity:.42;cursor:not-allowed;}
+.speech-rate{margin-left:auto;display:flex;align-items:center;gap:5px;font-size:11px;font-weight:750;color:var(--ink-soft);}
+.speech-rate select{font:inherit;color:var(--green);background:rgba(255,255,255,.76);
+  border:1px solid rgba(31,84,53,.18);border-radius:8px;padding:6px 7px;outline:none;}
+.speech-nav{display:flex;gap:6px;margin-top:8px;flex-wrap:wrap;}
+.speech-nav .speech-btn{padding:8px 10px;}
+.speech-now{margin-top:9px;padding:9px 10px;background:rgba(255,255,255,.58);border-radius:9px;
+  border-left:3px solid rgba(31,84,53,.32);transition:.18s;}
+.speech-player.speaking .speech-now{background:rgba(255,255,255,.88);border-left-color:var(--gold-deep);}
+.speech-status{display:flex;align-items:center;justify-content:space-between;gap:8px;
+  font-size:10.5px;font-weight:800;color:var(--green2);letter-spacing:.03em;margin-bottom:3px;}
+.speech-line{font-family:var(--serif);font-size:13.5px;line-height:1.55;color:#314139;}
+.speech-unsupported{font-size:12px;line-height:1.55;color:var(--muted);}
 /* masked self-test */
 .answer.masked{user-select:none;}
 .answer.masked .reveal-hint{display:flex;}
 .answer.masked > .atext{filter:blur(7px);opacity:.55;pointer-events:none;}
+.answer.masked > .speech-player{display:none;}
 .reveal-hint{display:none;position:absolute;inset:0;align-items:center;justify-content:center;gap:8px;
   font-family:var(--sans);font-size:13.5px;font-weight:700;color:var(--green);cursor:pointer;
   background:rgba(255,255,255,.25);border-radius:14px;}
@@ -246,6 +271,9 @@ footer b{color:var(--green2);}
   .sheet-head{padding:18px 18px 14px;} .sheet-body{padding:6px 18px 26px;}
   .brand h1{font-size:17px;} .season{display:none;}
   .hero{padding:26px 20px;}
+  .speech-top{align-items:stretch;}
+  .speech-btn{padding:10px 11px;}
+  .speech-rate{margin-left:0;width:100%;justify-content:flex-end;}
 }
 @media (max-width:380px){.grid{grid-template-columns:1fr;}}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;}}
@@ -5267,6 +5295,7 @@ document.addEventListener("keydown",e=>{ if(e.key==="Escape") closeDetail(); });
 function answerBlock(html){
   const m=S.mask?"masked":"";
   return `<div class="answer ${m}"><div class="atext">${html}</div>
+    <div class="speech-player"></div>
     <div class="reveal-hint"><span class="ic">👁</span>点击显示参考答案</div></div>`;
 }
 function transBlock(t){
@@ -5274,7 +5303,238 @@ function transBlock(t){
   return `<button class="trans-btn">显示中文译文</button><div class="trans">${t}</div>`;
 }
 
+/* ---------------- sentence-by-sentence read-aloud ---------------- */
+const Speech = {
+  supported:"speechSynthesis" in window && "SpeechSynthesisUtterance" in window,
+  player:null, sentences:[], index:0, status:"idle", token:0, autoAdvance:false, pendingNext:false
+};
+
+function cleanSpeechText(text){
+  let out=(text||"").replace(/\u00a0/g," ");
+  // Remove Chinese glosses such as “work overtime（加班工作）” before speaking.
+  for(let i=0;i<3;i++){
+    out=out.replace(/[（(][^()（）]*[\u3400-\u9fff][^()（）]*[)）]/g,"");
+  }
+  return out.replace(/[\u3400-\u9fff]+/g,"").replace(/[ \t]+/g," ").replace(/\s*\n\s*/g," ").trim();
+}
+
+function splitAnswerSentences(answerText){
+  const text=cleanSpeechText(answerText);
+  if(!text) return [];
+  if(typeof Intl!=="undefined" && Intl.Segmenter){
+    try{
+      const seg=new Intl.Segmenter("en",{granularity:"sentence"});
+      return Array.from(seg.segment(text),x=>x.segment.trim()).filter(Boolean);
+    }catch(e){}
+  }
+  return (text.match(/[^.!?]+(?:[.!?]+["'’”]?)|[^.!?]+$/g)||[text]).map(x=>x.trim()).filter(Boolean);
+}
+
+function answerTextForSpeech(atext){
+  const clone=atext.cloneNode(true);
+  clone.querySelectorAll("br").forEach(br=>br.replaceWith(document.createTextNode("\n")));
+  return clone.textContent||"";
+}
+
+function speechStatusLabel(){
+  if(Speech.status==="speaking") return "正在朗读";
+  if(Speech.status==="paused") return "已暂停";
+  if(Speech.status==="stopped") return "已停止";
+  if(Speech.status==="finished") return "朗读完成";
+  return "准备朗读";
+}
+
+function updateSpeechPlayer(player){
+  if(!player || !player._sentences || !player._sentences.length) return;
+  const active=Speech.player===player;
+  const index=active?Speech.index:(player._index||0);
+  const status=active?Speech.status:"idle";
+  player.classList.toggle("speaking",active && status==="speaking");
+  const counter=player.querySelector(".speech-counter");
+  const line=player.querySelector(".speech-line");
+  const state=player.querySelector(".speech-state");
+  const pause=player.querySelector(".speech-pause");
+  const stop=player.querySelector(".speech-stop");
+  if(counter) counter.textContent=`第 ${index+1} / ${player._sentences.length} 句`;
+  if(line) line.textContent=player._sentences[index]||"";
+  if(state) state.textContent=active?speechStatusLabel():"准备朗读";
+  if(pause){
+    pause.textContent=active && status==="paused"?"▶ 继续":"⏸ 暂停";
+    pause.disabled=!active || !["speaking","paused"].includes(status);
+  }
+  if(stop) stop.disabled=!active || !["speaking","paused"].includes(status);
+  const prev=player.querySelector(".speech-prev");
+  const next=player.querySelector(".speech-next");
+  if(prev) prev.disabled=index<=0;
+  if(next) next.disabled=index>=player._sentences.length-1;
+}
+
+function resetPreviousSpeechPlayer(){
+  if(!Speech.player) return;
+  Speech.player._index=Speech.index;
+  const previous=Speech.player;
+  Speech.player=null; Speech.sentences=[]; Speech.index=0; Speech.autoAdvance=false; Speech.pendingNext=false;
+  updateSpeechPlayer(previous);
+}
+
+function cancelSpeech(status="stopped"){
+  Speech.token++;
+  if(Speech.supported) window.speechSynthesis.cancel();
+  if(Speech.player){
+    Speech.status=status;
+    Speech.autoAdvance=false;
+    Speech.pendingNext=false;
+    updateSpeechPlayer(Speech.player);
+  }
+}
+
+function preferredEnglishVoice(){
+  const voices=window.speechSynthesis.getVoices();
+  return voices.find(v=>/^en-GB\b/i.test(v.lang)) ||
+    voices.find(v=>/^en\b/i.test(v.lang)) || null;
+}
+
+function speakCurrentSentence(token){
+  if(!Speech.supported || !Speech.player || token!==Speech.token) return;
+  const sentence=Speech.sentences[Speech.index];
+  if(!sentence) return;
+  const utterance=new SpeechSynthesisUtterance(sentence);
+  const voice=preferredEnglishVoice();
+  if(voice) utterance.voice=voice;
+  utterance.lang=voice?voice.lang:"en-GB";
+  const rate=Speech.player.querySelector(".speech-speed");
+  utterance.rate=rate?Number(rate.value):0.9;
+  utterance.pitch=1;
+  utterance.onstart=()=>{
+    if(token!==Speech.token) return;
+    Speech.status="speaking";
+    updateSpeechPlayer(Speech.player);
+  };
+  utterance.onend=()=>{
+    if(token!==Speech.token || !Speech.player) return;
+    if(Speech.autoAdvance && Speech.index<Speech.sentences.length-1){
+      Speech.index++;
+      Speech.pendingNext=true;
+      Speech.player._index=Speech.index;
+      updateSpeechPlayer(Speech.player);
+      window.setTimeout(()=>{
+        if(token===Speech.token && Speech.status!=="paused"){
+          Speech.pendingNext=false;
+          speakCurrentSentence(token);
+        }
+      },260);
+    }else{
+      Speech.status=Speech.autoAdvance?"finished":"idle";
+      Speech.autoAdvance=false;
+      Speech.pendingNext=false;
+      updateSpeechPlayer(Speech.player);
+    }
+  };
+  utterance.onerror=()=>{
+    if(token!==Speech.token || !Speech.player) return;
+    Speech.status="stopped";
+    Speech.autoAdvance=false;
+    Speech.pendingNext=false;
+    updateSpeechPlayer(Speech.player);
+  };
+  window.speechSynthesis.speak(utterance);
+}
+
+function startSpeech(player,index,autoAdvance){
+  if(!Speech.supported || !player || !player._sentences.length) return;
+  if(Speech.player && Speech.player!==player){
+    cancelSpeech("stopped");
+    resetPreviousSpeechPlayer();
+  }else{
+    Speech.token++;
+    window.speechSynthesis.cancel();
+  }
+  Speech.player=player;
+  Speech.sentences=player._sentences;
+  Speech.index=Math.max(0,Math.min(index,Speech.sentences.length-1));
+  Speech.player._index=Speech.index;
+  Speech.status="speaking";
+  Speech.autoAdvance=autoAdvance;
+  Speech.pendingNext=false;
+  const token=Speech.token;
+  updateSpeechPlayer(player);
+  speakCurrentSentence(token);
+}
+
+function toggleSpeechPause(player){
+  if(!Speech.supported || Speech.player!==player) return;
+  if(Speech.status==="speaking"){
+    window.speechSynthesis.pause();
+    Speech.status="paused";
+  }else if(Speech.status==="paused"){
+    window.speechSynthesis.resume();
+    Speech.status="speaking";
+    if(Speech.pendingNext){
+      Speech.pendingNext=false;
+      speakCurrentSentence(Speech.token);
+    }
+  }
+  updateSpeechPlayer(player);
+}
+
+function buildSpeechPlayers(){
+  sheet.querySelectorAll(".answer").forEach(answer=>{
+    const player=answer.querySelector(".speech-player");
+    const atext=answer.querySelector(".atext");
+    if(!player || !atext) return;
+    const sentences=splitAnswerSentences(answerTextForSpeech(atext));
+    player._sentences=sentences;
+    player._index=0;
+    if(!Speech.supported){
+      player.innerHTML=`<div class="speech-unsupported">当前浏览器不支持答案朗读，请使用最新版 Chrome、Edge 或 Safari。</div>`;
+      return;
+    }
+    if(!sentences.length){ player.remove(); return; }
+    player.innerHTML=`
+      <div class="speech-top">
+        <button type="button" class="speech-btn primary speech-start">▶ 逐句朗读</button>
+        <button type="button" class="speech-btn pause speech-pause" disabled>⏸ 暂停</button>
+        <button type="button" class="speech-btn speech-stop" disabled>■ 停止</button>
+        <label class="speech-rate">语速
+          <select class="speech-speed" aria-label="朗读语速">
+            <option value="0.75">0.75×</option>
+            <option value="0.9" selected>0.9×</option>
+            <option value="1">1.0×</option>
+          </select>
+        </label>
+      </div>
+      <div class="speech-nav">
+        <button type="button" class="speech-btn speech-prev" disabled>← 上一句</button>
+        <button type="button" class="speech-btn speech-repeat">↻ 重读本句</button>
+        <button type="button" class="speech-btn speech-next"${sentences.length===1?" disabled":""}>下一句 →</button>
+      </div>
+      <div class="speech-now">
+        <div class="speech-status"><span class="speech-counter">第 1 / ${sentences.length} 句</span><span class="speech-state">准备朗读</span></div>
+        <div class="speech-line">${escHTML(sentences[0])}</div>
+      </div>`;
+    player.querySelector(".speech-start").addEventListener("click",e=>{ e.stopPropagation(); startSpeech(player,0,true); });
+    player.querySelector(".speech-pause").addEventListener("click",e=>{ e.stopPropagation(); toggleSpeechPause(player); });
+    player.querySelector(".speech-stop").addEventListener("click",e=>{ e.stopPropagation(); cancelSpeech("stopped"); });
+    player.querySelector(".speech-prev").addEventListener("click",e=>{
+      e.stopPropagation(); const i=Speech.player===player?Speech.index:player._index; startSpeech(player,i-1,false);
+    });
+    player.querySelector(".speech-repeat").addEventListener("click",e=>{
+      e.stopPropagation(); const i=Speech.player===player?Speech.index:player._index; startSpeech(player,i,false);
+    });
+    player.querySelector(".speech-next").addEventListener("click",e=>{
+      e.stopPropagation(); const i=Speech.player===player?Speech.index:player._index; startSpeech(player,i+1,false);
+    });
+    player.querySelector(".speech-speed").addEventListener("change",()=>{
+      if(Speech.player===player && ["speaking","paused"].includes(Speech.status)){
+        startSpeech(player,Speech.index,Speech.autoAdvance);
+      }
+    });
+  });
+}
+
 function openDetail(kind,id){
+  if(Speech.supported) cancelSpeech("stopped");
+  resetPreviousSpeechPlayer();
   const it=(kind==="part1"?DATA.part1:DATA.cue).find(x=>x.id===id);
   if(!it) return;
   let body="";
@@ -5326,6 +5586,7 @@ function markBtn(id){
 }
 function wireSheet(){
   document.getElementById("closeX").addEventListener("click",closeDetail);
+  buildSpeechPlayers();
   sheet.querySelectorAll(".answer.masked").forEach(a=>{
     a.addEventListener("click",()=>{ a.classList.remove("masked"); });
   });
@@ -5337,7 +5598,13 @@ function wireSheet(){
   if(md) md.addEventListener("click",()=>{ const id=md.dataset.id; toggleDone(id);
     const d=isDone(id); md.classList.toggle("done",d); md.textContent=d?"✓ 已掌握（点击取消）":"标记为已掌握"; });
 }
-function closeDetail(){ scrim.classList.remove("open"); sheet.classList.remove("open"); document.body.style.overflow=""; }
+function closeDetail(){
+  cancelSpeech("stopped");
+  resetPreviousSpeechPlayer();
+  scrim.classList.remove("open"); sheet.classList.remove("open"); document.body.style.overflow="";
+}
+document.addEventListener("visibilitychange",()=>{ if(document.hidden && Speech.status==="speaking") toggleSpeechPause(Speech.player); });
+window.addEventListener("beforeunload",()=>{ if(Speech.supported) window.speechSynthesis.cancel(); });
 
 /* ---------------- home ---------------- */
 function renderHome(){
@@ -5350,7 +5617,7 @@ function renderHome(){
   main.innerHTML=`<div class="view">
     <div class="hero">
       <h2>当季雅思口语题库，全部配 7 分原创参考答案</h2>
-      <p>这是 2026 年 5–8 月换季更新版，覆盖 Part 1 高频问答与 Part 2&amp;3 题卡（含非大陆题）。答案均按 Oliver 教学体系手写：地道表达、逻辑连接、中英对照，并可开启「遮挡答案」做主动回忆自测。</p>
+      <p>这是 2026 年 5–8 月换季更新版，覆盖 Part 1 高频问答与 Part 2&amp;3 题卡（含非大陆题）。答案均按 Oliver 教学体系手写：地道表达、逻辑连接、中英对照，并支持逐句朗读、暂停跟读与「遮挡答案」主动回忆自测。</p>
       <div class="statrow">
         <div class="stat"><div class="n">${nQ}</div><div class="l">Part 1 问答</div></div>
         <div class="stat"><div class="n">${nCue}</div><div class="l">Part 2 题卡</div></div>
@@ -5371,6 +5638,7 @@ function renderHome(){
       <h4>怎么用这套题库</h4>
       <ol>
         <li><b>先看话题，再练答案。</b>在 Part 1 / 题卡 两个标签里按话题浏览，点开任意卡片查看参考答案。</li>
+        <li><b>逐句听、逐句跟读。</b>打开答案后点「逐句朗读」，可随时暂停或继续，也可重读本句、切换上一句或下一句；需要时可调整语速。</li>
         <li><b>开启「遮挡答案 · 自测」</b>，答案会被模糊处理，先自己说一遍，再点开对照——这才是提分的关键。</li>
         <li><b>黄底优先记。</b>黄底是可迁移的高分表达，红字帮你把句子连起来；译文按需查看，不要依赖。</li>
         <li><b>练完点「已掌握」</b>，上方进度会自动记录（仅存在你本机浏览器）。</li>
@@ -5388,6 +5656,7 @@ function renderGuide(){
       <ol>
         <li><b>换季更新：</b>本版为 2026 年 5–8 月在考题库，含本季新题、老题沿用与补充（含非大陆）题。</li>
         <li><b>个性化建议：</b>参考答案中的人物 / 经历仅作示范，请结合自己的真实经历替换细节，考官更看重真实与连贯。</li>
+        <li><b>跟读训练：</b>每份参考答案均支持逐句朗读；可暂停、继续、重读本句、前后切换并调整语速。</li>
         <li><b>自测优先：</b>建议常开「遮挡答案」模式，先输出后对照。</li>
         <li><b>定制服务：</b>如需按你本人真实经历定制当季题库答案，或 1 对 1 课程，请加微信 <b>Oliver66999</b>。</li>
       </ol>
