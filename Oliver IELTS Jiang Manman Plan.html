@@ -5188,4 +5188,11 @@ autoToday();switchView('home');
 @media(min-width:1181px){body.teacher-warm-app main.wrap{max-width:min(1160px,calc(100vw - 190px))!important;margin-left:auto!important;margin-right:174px!important}body.teacher-warm-app .utility-dock{right:12px!important;max-width:146px!important}}
 .jmm-message{grid-column:1/-1;white-space:pre-wrap}.logic-evidence input[type=number]{max-width:100%;padding:9px;border:1px solid var(--hair);border-radius:9px}.ro-empty button:disabled{opacity:.45;cursor:default}
 </style>
+<style id="jmm-desktop-scroll-header-fix">
+/* Desktop: keep only the navigation sticky; let the title leave with the page. */
+@media (min-width:1181px){
+  body.teacher-warm-app .appbar{position:relative!important;top:auto!important;}
+  body.teacher-warm-app .tabbar{bottom:auto!important;}
+}
+</style>
 </body></html>
